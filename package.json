@@ -1,0 +1,12 @@
+{
+  "name": "queulat",
+  "version": "0.1.0",
+  "description": "Developers toolset for WordPress",
+  "main": "",
+  "author": "Felipe Lavín Z.",
+  "license": "GPL-3.0-or-later",
+  "private": true,
+  "dependencies": {
+    "select2": "select2/select2"
+  }
+}

@@ -1,0 +1,14 @@
+<?php
+
+use Queulat\Post_Type;
+
+class {{ class_name }}_Post_Type extends Post_Type {
+	public function get_post_type() : string {
+		return '{{ post_type }}';
+	}
+	public function get_post_type_args() : array {
+		return [
+{{ post_type_arguments|raw }}
+		];
+	}
+}

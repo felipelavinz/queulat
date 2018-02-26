@@ -1,0 +1,23 @@
+<?php
+/**
+ * Plugin Name: {{ label }} Custom Post Type Plugin
+ * Plugin URI:
+ * Description: {{ description }}
+ * Version: 0.1.0
+ * Author:
+ * Author URI:
+ * License: GPL-3.0-or-later
+ */
+
+register_activation_hook( __FILE__, function(){
+	require_once __DIR__ .'/class-{{ file_name }}-post-type.php';
+	{{ class_name }}_Post_Type::activate_plugin();
+});
+
+add_action('plugins_loaded', function(){
+	require_once __DIR__ .'/class-{{ file_name }}-post-type.php';
+	require_once __DIR__ .'/class-{{ file_name }}-post-query.php';
+	require_once __DIR__ .'/class-{{ file_name }}-post-object.php';
+});
+
+add_action('init', ['{{ class_name }}_Post_Type', 'register_post_type']);

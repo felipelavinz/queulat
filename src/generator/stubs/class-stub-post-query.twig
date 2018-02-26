@@ -1,0 +1,15 @@
+<?php
+
+use Queulat\Post_Query;
+
+class {{ class_name }}_Post_Query extends Post_Query {
+	public function get_post_type() : string {
+		return '{{ post_type }}';
+	}
+	public function get_decorator() : string {
+		return {{ class_name }}_Post_Object::class;
+	}
+	public function get_default_args() : array {
+		return [];
+	}
+}

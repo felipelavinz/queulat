@@ -118,7 +118,7 @@ abstract class Metabox {
 	 *
 	 * @return array An array of form fields
 	 */
-	abstract public function get_fields();
+	abstract public function get_fields() : array;
 
 	/**
 	 * Sanitize metabox data
@@ -126,7 +126,7 @@ abstract class Metabox {
 	 * @param  array $data  Submitted form data
 	 * @return array        Sanitized data
 	 */
-	abstract public function sanitize_data( $data );
+	abstract public function sanitize_data( array $data ) : array;
 
 	/**
 	 * Set-up common metabox actions

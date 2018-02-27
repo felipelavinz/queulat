@@ -2,20 +2,12 @@
 
 namespace Queulat\Forms\Element;
 
-use Queulat\Forms;
+use Queulat\Forms\Form_Component;
 use Queulat\Forms\Properties_Trait;
 use Queulat\Forms\Childless_Node_Trait;
 
-class WP_Editor extends Forms\Form_Component {
-	use Properties_Trait, Childless_Node_Trait;
-
-	private $args = array();
-
-	public function get_tag_name() {
-		return 'wp-media';
-	}
-
-	public function get_default_args() {
+class WP_Editor extends Form_Component {
+	public function get_default_properties() {
 		return [
 			'wpautop'       => true,
 			'media_buttons' => true,
@@ -26,15 +18,6 @@ class WP_Editor extends Forms\Form_Component {
 		];
 	}
 
-	public function set_args( $args = array() ) {
-		$this->args = wp_parse_args( $args, $this->get_default_args() );
-		return $this;
-	}
-
-	public function get_args() {
-		return $this->args;
-	}
-
 	private function sanitize_id() {
 		$id = $this->get_id() . $this->get_name();
 		$id = preg_replace( '/[^a-z]/', '', $id );
@@ -43,7 +26,7 @@ class WP_Editor extends Forms\Form_Component {
 
 	public function __toString() {
 		ob_start();
-		$args = $this->get_args();
+		$args = wp_parse_args( $this->get_properties(), $this->get_default_properties() );
 		if ( empty( $args['textarea_name'] ) ) {
 			$args['textarea_name'] = $this->get_name();
 		}

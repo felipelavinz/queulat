@@ -59,6 +59,13 @@ class Google_Map extends Form_Component {
 							'value' => $value->zoom ?? '',
 							'attributes' => [ 'class' => 'gmapsearch__zoom' ]
 						]
+					),
+					Node_Factory::make(
+						Input_Hidden::class, [
+							'name' => "{$name}[components]",
+							'value' => $value->components ?? '',
+							'attributes' => [ 'class' => 'gmapsearch__components' ]
+						]
 					)
 				]
 			]

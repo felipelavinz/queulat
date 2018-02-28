@@ -28,8 +28,9 @@
 
 			gMap.controls[ google.maps.ControlPosition.TOP_LEFT ].push( input[0] );
 			var autocomplete = new google.maps.places.Autocomplete( input[0] ),
-				infowindow = new google.maps.InfoWindow(),
-				marker = new google.maps.Marker({
+				infowindow   = new google.maps.InfoWindow(),
+				geocoder     = new google.maps.Geocoder();
+				marker       = new google.maps.Marker({
 					map: gMap,
 					anchorPoint: new google.maps.Point( lat, lng )
 				});
@@ -54,12 +55,29 @@
 				marker.setVisible( true );
 				container.find('.gmapsearch__lat').val( place.geometry.location.lat() );
 				container.find('.gmapsearch__lng').val( place.geometry.location.lng() );
+
+				geocoder.geocode({
+					location: place.geometry.location
+				}, function(results, status){
+					if ( status == 'OK' ) {
+						container.find('.gmapsearch__components').val( JSON.stringify( results[0].address_components ) );
+					}
+				});
+
 			});
 
 			google.maps.event.addListener( marker, 'dragend', function(){
 				var markerPos = marker.getPosition();
 				container.find('.gmapsearch__lat').val( markerPos.lat() );
 				container.find('.gmapsearch__lng').val( markerPos.lng() );
+
+				geocoder.geocode({
+					location: markerPos
+				}, function(results, status){
+					if ( status == 'OK' ) {
+						container.find('.gmapsearch__components').val( JSON.stringify( results[0].address_components ) );
+					}
+				});
 			});
 		});
 	});

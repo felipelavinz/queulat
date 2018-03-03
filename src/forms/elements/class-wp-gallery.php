@@ -5,7 +5,7 @@ namespace Queulat\Forms\Element;
 use Queulat\Forms;
 
 class WP_Gallery extends WP_Media {
-	public function get_default_args() {
+	public function get_defaults() {
 		return [
 			'title'    => $this->get_label(),
 			'multiple' => 'add',

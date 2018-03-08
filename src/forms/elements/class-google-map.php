@@ -82,14 +82,18 @@ class Google_Map extends Form_Component {
 	 * @return void
 	 */
 	public function enqueue_assets() {
+		static::enqueue_js_api();
+		wp_enqueue_script( 'queulat__google-map', queulat_url( 'src/forms/elements/js/element-google-map.js' ), ['jquery'], '', true );
+	}
+
+	public static function enqueue_js_api() {
 		$google_maps_url = add_query_arg( [
 			'v' => 3,
 			'hl' => get_option('WPLANG') ? current( explode('_', get_option('WPLANG') ) ) : 'en',
-			'key' => $this->get_api_key(),
+			'key' => static::get_api_key(),
 			'libraries' => 'places'
 		], 'https://maps.googleapis.com/maps/api/js' );
 		wp_enqueue_script( 'google-maps-api', $google_maps_url, [], null );
-		wp_enqueue_script( 'queulat__google-map', queulat_url( 'src/forms/elements/js/element-google-map.js' ), ['jquery'], '', true );
 	}
 
 	/**
@@ -97,7 +101,7 @@ class Google_Map extends Form_Component {
 	 *
 	 * @return string
 	 */
-	private function get_api_key() : string {
+	public static function get_api_key() : string {
 		if ( defined('GOOGLE_MAPS_API_KEY') ) {
 			return GOOGLE_MAPS_API_KEY;
 		}

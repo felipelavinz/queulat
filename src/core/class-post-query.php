@@ -171,6 +171,13 @@ abstract class Post_Query implements \Iterator, \Countable {
 		return $this->query->post_count;
 	}
 
+	public function __debugInfo() {
+		if ( ! isset( $this->query ) ) {
+			$this->rewind();
+		}
+		return get_object_vars( $this );
+	}
+
 
 	/**
 	 * Iterator methods

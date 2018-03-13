@@ -126,7 +126,7 @@ Strings::extend(
 		array_pop( $words );
 		// pop the latest of the words, get it clean if it ends on a punctuation mark
 		$last_word = array_pop( $words );
-		$last_word = preg_replace( '/[^\w]/', '', $last_word );
+		$last_word = preg_replace( '/[\W]/u', '', $last_word );
 		$words[] = $last_word;
 		return implode(' ', $words) . $end;
 	}

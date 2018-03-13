@@ -45,12 +45,6 @@ class WP_Wide extends Forms\Form_View {
 							$out .= (string) $element;
 						$out     .= '</td>';
 					$out         .= '</tr>';
-					// } elseif ( $element instanceof Element\Input_Button || $element instanceof Element\Button || ! method_exists($element, 'getLabel') ) {
-					// $out .= '<tr>';
-					// $out .= '<td colspan="2">';
-					// $out .= (string)$element;
-					// $out .= '</td>';
-					// $out .= '</tr>';
 				} elseif ( $element instanceof Form_Node_Interface ) {
 					if ( $element instanceof Form_Element_Interface ) {
 						$this->set_input_size( $element );
@@ -86,11 +80,6 @@ class WP_Wide extends Forms\Form_View {
 		if ( ! $has_id ) {
 			$element->set_attribute( 'id', $this->form->get_attribute( 'id' ) . '-element-' . $this->i );
 		}
-		// if ( $element instanceof Element\InputSubmit || $element instanceof Element\Button && $element->getAttribute('type') === 'submit' ) {
-		// $element->setAttribute('class', 'button-primary');
-		// } elseif ( $element instanceof Element\InputButton || $element instanceof Element\Button ) {
-		// $element->setAttribute('class', 'button');
-		// }
 		$this->i++;
 	}
 	/**

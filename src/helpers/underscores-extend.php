@@ -8,14 +8,14 @@ use Underscore\Types\Strings;
  *
  * An array is "associative" if it doesn't have sequential numeric keys beginning with zero.
  *
- * @param  array   $array
- * @return boolean
+ * @param  iterable $array
+ * @return bool
  * @internal Copied from Laravel framework (from Taylor Otwell under MIT License)
  * @link https://github.com/laravel/framework/blob/be7fbb60376bd61f07e9c637473e5b2cf7eebe5c/src/Illuminate/Support/Arr.php#L279-L292
  */
 Arrays::extend(
-	'isAssociative', function( $array ) : bool {
-		$keys = array_keys( $array );
+	'isAssociative', function( iterable $array ) : bool {
+		$keys = is_array( $array ) ? array_keys( $array ) : array_keys( $array->getArrayCopy() );
 		return array_keys( $keys ) !== $keys;
 	}
 );

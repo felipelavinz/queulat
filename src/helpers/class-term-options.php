@@ -25,4 +25,7 @@ class Term_Options extends \ArrayIterator {
 		$key = parent::key();
 		return $this->terms[ $key ]->term_id;
 	}
+	public function getArrayCopy() {
+		return wp_list_pluck( $this->terms, 'name', 'term_id' );
+	}
 }

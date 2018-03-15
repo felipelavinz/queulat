@@ -3,9 +3,12 @@
 namespace Queulat\Forms\View;
 
 use Queulat\Forms;
-use Queulat\Forms\Element;
-use Queulat\Forms\Form_Element_Interface;
+use Queulat\Forms\Element\Input;
+use Queulat\Forms\Element_Interface;
+use Queulat\Forms\Element\Input_Hidden;
 use Queulat\Forms\Properties_Interface;
+use Queulat\Forms\Attributes_Interface;
+use Queulat\Forms\Form_Element_Interface;
 
 class WP_Side extends Forms\Form_View {
 	private $i = 1;
@@ -14,21 +17,15 @@ class WP_Side extends Forms\Form_View {
 		$out .= '<div class="queulat-form">';
 		foreach ( $this->form->get_children() as $element ) {
 			$this->set_element_view_attributes( $element );
-			if ( $element instanceof Element\Input_Hidden ) {
+			if ( $element instanceof Input_Hidden ) {
 				$out     .= '<div class="hidden">';
 					$out .= (string) $element;
 				$out     .= '</div>';
-				// } elseif ( $element instanceof Element\Input_Button || $element instanceof Element\Button || ! method_exists($element, 'getLabel') ) {
-				// $out .= '<tr>';
-				// $out .= '<td colspan="2">';
-				// $out .= (string)$element;
-				// $out .= '</td>';
-				// $out .= '</tr>';
 			} else {
 				$this->set_input_size( $element );
 				$out     .= '<div class="control-group">';
 					$out .= '<p>';
-				if ( $element instanceof Form_Element_Interface ) {
+				if ( is_callable([ $element, 'get_label'] ) ) {
 					$out .= '<label for="' . $element->get_attribute( 'id' ) . '">' . $element->get_label() . '</label>';
 				}
 						$out .= (string) $element;
@@ -40,23 +37,25 @@ class WP_Side extends Forms\Form_View {
 		$out .= '</div>';
 		return $out;
 	}
-	protected function set_element_view_attributes( Forms\Element_Interface &$element ) {
+
+	/**
+	 * Set "view" attributes on each form element
+	 *
+	 * @param Attributes_Interface $element A form element
+	 */
+	protected function set_element_view_attributes( Attributes_Interface &$element ) {
 		$has_id = $element->get_attribute( 'id' );
+		$form_id = empty( $this->form->get_attribute( 'id' ) ) ? 'side-form' : $this->form->get_attribute( 'id' );
 		if ( ! $has_id ) {
-			$element->set_attribute( 'id', $this->form->get_attribute( 'id' ) . '-' . $this->i );
+			$element->set_attribute( 'id', $form_id . '-' . $this->i );
 		}
-		// if ( $element instanceof Element\InputSubmit || $element instanceof Element\Button && $element->getAttribute('type') === 'submit' ) {
-		// $element->setAttribute('class', 'button-primary');
-		// } elseif ( $element instanceof Element\InputButton || $element instanceof Element\Button ) {
-		// $element->setAttribute('class', 'button');
-		// }
 		$this->i++;
 	}
 	/**
 	 * Automatically set a suitable class for text input fields
 	 */
-	protected function set_input_size( Forms\Element_Interface &$element ) {
-		if ( ! $element instanceof Element\Input ) {
+	protected function set_input_size( Attributes_Interface &$element ) {
+		if ( ! $element instanceof Input ) {
 			return;
 		}
 
@@ -77,6 +76,12 @@ class WP_Side extends Forms\Form_View {
 		}
 		return;
 	}
+
+	/**
+	 * Show "description" or form help text, if applicable
+	 *
+	 * @param Properties_Interface $element The form element
+	 */
 	protected function get_element_description( Properties_Interface $element ) {
 		if ( method_exists( $element, 'get_property' ) ) {
 			$description = $element->get_property( 'description' );

@@ -105,7 +105,7 @@ class Google_Map extends Form_Component {
 		if ( defined('GOOGLE_MAPS_API_KEY') ) {
 			return GOOGLE_MAPS_API_KEY;
 		}
-		if ( env('GOOGLE_MAPS_API_KEY') ) {
+		if ( function_exists('env') && env('GOOGLE_MAPS_API_KEY') ) {
 			return env('GOOGLE_MAPS_API_KEY');
 		}
 		$api_key = apply_filters('queulat/forms/element/google-map__api_key', '');

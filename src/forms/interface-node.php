@@ -63,7 +63,7 @@ interface Node_Interface {
 
 	/**
 	 * Get a string representation of the element,
-	 * Use (string)$object to get, or echo $object to output
+	 * Use (string) $object to get, or echo $object to output
 	 *
 	 * @return string String representation of the element
 	 */

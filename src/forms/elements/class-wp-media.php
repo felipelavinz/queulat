@@ -45,11 +45,11 @@ class WP_Media extends Form_Component {
 			] );
 		}
 
-		// add the "js-queulat-wp-media" class for the js plugin
+		// add the "js-queulat-wp-media" class for the js plugin.
 		$this->add_class( 'js-queulat-wp-media' );
 
-		// get custom instance attributes
-		// you can pass them on an "instance" property or as the "data-wpmedia" attribute
+		// get custom instance attributes.
+		// you can pass them on an "instance" property or as the "data-wpmedia" attribute.
 		$instance = [];
 		if ( $this->get_property( 'instance' ) ) {
 			$instance = $this->get_property( 'instance' );

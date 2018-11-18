@@ -103,7 +103,7 @@ abstract class Post_Query implements \Iterator, \Countable {
 			'post_type' => $this->get_post_type(),
 		);
 		if ( is_callable( [ $this, 'get_default_args' ] ) ) {
-			$default_args = array_merge( $default_args, $this->get_default_args( ) );
+			$default_args = array_merge( $default_args, $this->get_default_args() );
 		}
 		$query_args  = wp_parse_args( $default_args, $this->query_args );
 		$this->query = new \WP_Query( $query_args );

@@ -87,81 +87,81 @@ class CPT_Plugin extends Abstract_Admin {
 			),
 			Node_Factory::make(
 				Yes_No::class, [
-					'label' => __( 'Hierarchical', 'queulat' ),
-					'name' => 'hierarchical',
+					'label'      => __( 'Hierarchical', 'queulat' ),
+					'name'       => 'hierarchical',
 					'properties' => [
-						'description' => __( "Whether the post type is hierarchical. Allows Parent to be specified. The 'supports' parameter should contain 'page-attributes' to show the parent select box on the editor page", 'queulat' )
-					]
+						'description' => __( "Whether the post type is hierarchical. Allows Parent to be specified. The 'supports' parameter should contain 'page-attributes' to show the parent select box on the editor page", 'queulat' ),
+					],
 				]
 			),
 			Node_Factory::make(
 				Yes_No::class, [
-					'label' => __( 'Has archive', 'queulat' ),
-					'name' => 'has_archive',
+					'label'      => __( 'Has archive', 'queulat' ),
+					'name'       => 'has_archive',
 					'properties' => [
-						'description' => __( 'Enables post type archives', 'queulat' )
-					]
+						'description' => __( 'Enables post type archives', 'queulat' ),
+					],
 				]
 			),
 			Node_Factory::make(
 				Fieldset::class, [
 					'properties' => [
-						'label' => __( 'Rewrite', 'queulat' )
+						'label' => __( 'Rewrite', 'queulat' ),
 					],
-					'children' => [
+					'children'   => [
 						Node_Factory::make(
 							Yes_No::class, [
 								'label' => 'Enable',
-								'name' => 'rewrite_enable',
+								'name'  => 'rewrite_enable',
 							]
 						),
 						Node_Factory::make(
 							Input_Text::class, [
-								'label' => 'Slug',
-								'name' => 'rewrite[slug]',
+								'label'      => 'Slug',
+								'name'       => 'rewrite[slug]',
 								'attributes' => [
-									'class' => 'regular-text',
-									'placeholder' => 'Customize the pemastruct slug'
-								]
+									'class'       => 'regular-text',
+									'placeholder' => 'Customize the pemastruct slug',
+								],
 							]
 						),
 						Node_Factory::make(
 							Yes_No::class, [
 								'label' => 'Prefix with "front"',
-								'name' => 'rewrite[with_front]',
+								'name'  => 'rewrite[with_front]',
 							]
 						),
 						Node_Factory::make(
 							Yes_No::class, [
 								'label' => 'Build feeds permastruct',
-								'name' => 'rewrite[feeds]',
+								'name'  => 'rewrite[feeds]',
 							]
 						),
 						Node_Factory::make(
 							Yes_No::class, [
 								'label' => 'Build pagination permastruct',
-								'name' => 'rewrite[pages]',
+								'name'  => 'rewrite[pages]',
 							]
 						),
-					]
+					],
 				]
 			),
 			Node_Factory::make(
 				Yes_No::class, [
 					'label' => 'Can export',
-					'name' => 'can_export'
+					'name'  => 'can_export',
 				]
 			),
 			Node_Factory::make(
 				Yes_No::class, [
 					'label' => 'Delete with user',
-					'name' => 'delete_with_user'
+					'name'  => 'delete_with_user',
 				]
 			),
 			Node_Factory::make(
 				Yes_No::class, [
 					'label' => 'Show in REST API',
-					'name' => 'show_in_rest'
+					'name'  => 'show_in_rest',
 				]
 			),
 			Node_Factory::make(
@@ -215,9 +215,9 @@ class CPT_Plugin extends Abstract_Admin {
 		// set the post capabilities
 		$data['capability_type'] = [
 			$slug,
-			Strings::plural( $slug )
+			Strings::plural( $slug ),
 		];
-		$data['map_meta_cap'] = true;
+		$data['map_meta_cap']    = true;
 
 		$plugin = new Custom_Post_Type_Plugin( $slug, $data );
 		$plugin->build();
@@ -226,12 +226,12 @@ class CPT_Plugin extends Abstract_Admin {
 	}
 
 	public function get_redirect_url() : string {
-		return admin_url('plugins.php');
+		return admin_url( 'plugins.php' );
 	}
 
 	public function success_url_params() : array {
 		return [
-			'cpt-plugin-created' => 'ok'
+			'cpt-plugin-created' => 'ok',
 		];
 	}
 }

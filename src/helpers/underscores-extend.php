@@ -58,6 +58,7 @@ Arrays::extend(
 
 /**
  * Recursively filter an array
+ *
  * @param  array    $array    The input array
  * @param  callable $callback A custom function for filtering (by default, uses array_filter)
  * @return array              Filtered array
@@ -75,6 +76,7 @@ Arrays::extend(
 
 /**
  * Convert a string to "kebab-case" (lowercase and separated by dashes)
+ *
  * @param  string $string The input string
  * @param  int    $limit  Limit the conversion to an amount of parts
  * @return string         String converted to kebab-case
@@ -88,6 +90,7 @@ Strings::extend(
 
 /**
  * Convert a string to Capitalized_Snake_Case
+ *
  * @param  string $string The input string
  * @param  int    $limit  Limit the conversion to this amount of parts
  * @return string         String converted to Capitalized_Snake_Case
@@ -96,14 +99,15 @@ Strings::extend(
 	'toCapitalizedSnakeCase', function( string $string, int $limit = 0 ) : string {
 		$string = Strings::toSnakeCase( $string, $limit );
 		$string = Strings::explode( $string, '_' );
-		$string = array_map('ucfirst', $string);
-		return implode('_', $string);
+		$string = array_map( 'ucfirst', $string );
+		return implode( '_', $string );
 	}
 );
 
 /**
  * Limit a string up to the desired amount of characters, but always finish
  * on full words (and optionally, the $end string)
+ *
  * @param  string $string The string that will be cut
  * @param  int    $limit  The maximum amount of characters for the string
  * @param  string $end    What to append at the end of the string, if the initial length it's over $limit
@@ -112,22 +116,22 @@ Strings::extend(
 Strings::extend(
 	'limitWords', function( string $string, int $limit, string $end = '' ) : string {
 		// cleanup the string
-		$string = function_exists('wp_strip_all_tags') ? wp_strip_all_tags( $string ) : strip_tags( $string );
+		$string = function_exists( 'wp_strip_all_tags' ) ? wp_strip_all_tags( $string ) : strip_tags( $string );
 
-		if ( function_exists('mb_strlen') && mb_strlen( $string ) < $limit ) {
+		if ( function_exists( 'mb_strlen' ) && mb_strlen( $string ) < $limit ) {
 			return $string;
 		} elseif ( strlen( $string ) < $limit ) {
 			return $string;
 		}
 
 		$string = substr( $string, 0, $limit );
-		$words  = explode(' ', $string);
+		$words  = explode( ' ', $string );
 		// pop a possibly-cut word
 		array_pop( $words );
 		// pop the latest of the words, get it clean if it ends on a punctuation mark
 		$last_word = array_pop( $words );
 		$last_word = preg_replace( '/[\W]/u', '', $last_word );
-		$words[] = $last_word;
-		return implode(' ', $words) . $end;
+		$words[]   = $last_word;
+		return implode( ' ', $words ) . $end;
 	}
 );

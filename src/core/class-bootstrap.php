@@ -12,7 +12,7 @@ class Bootstrap {
 				( new Generator\Admin\CPT_Plugin() )->init();
 			}
 		);
-		add_action('admin_enqueue_scripts', [ $this, 'enqueue_assets' ], 9999 );
+		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_assets' ], 9999 );
 		$this->register_default_node_factory_args();
 	}
 	public function enqueue_assets() {

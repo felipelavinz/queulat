@@ -76,7 +76,7 @@ class WP_Wide extends Forms\Form_View {
 		return $out;
 	}
 	protected function set_element_view_attributes( Attributes_Interface &$element ) {
-		$has_id  = $element->get_attribute( 'id' );
+		$has_id = $element->get_attribute( 'id' );
 		if ( ! $has_id ) {
 			$element->set_attribute( 'id', $this->form->get_attribute( 'id' ) . '-element-' . $this->i );
 		}

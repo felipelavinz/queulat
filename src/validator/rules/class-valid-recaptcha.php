@@ -7,12 +7,14 @@ use Queulat\Forms\Element\Recaptcha;
 
 class Valid_Recaptcha implements Validator_Interface {
 	public function is_valid( $value ) : bool {
-		$request = wp_remote_post( 'https://www.google.com/recaptcha/api/siteverify', [
-			'body' => [
-				'secret'   => Recaptcha::get_site_secret(),
-				'response' => $value
+		$request = wp_remote_post(
+			'https://www.google.com/recaptcha/api/siteverify', [
+				'body' => [
+					'secret'   => Recaptcha::get_site_secret(),
+					'response' => $value,
+				],
 			]
-		] );
+		);
 		if ( wp_remote_retrieve_response_code( $request ) != 200 ) {
 			return false;
 		}

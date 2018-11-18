@@ -12,7 +12,12 @@ class Bootstrap {
 				( new Generator\Admin\CPT_Plugin() )->init();
 			}
 		);
+		add_action('admin_enqueue_scripts', [ $this, 'enqueue_assets' ], 9999 );
 		$this->register_default_node_factory_args();
+	}
+	public function enqueue_assets() {
+		$styles_path = WPMU_PLUGIN_URL . '/queulat/dist/admin.css';
+		wp_enqueue_style( 'queulat-forms', $styles_path, [], null, 'all' );
 	}
 	private function register_default_node_factory_args() {
 		$handlers = [

@@ -7,6 +7,11 @@
   "license": "GPL-3.0-or-later",
   "private": true,
   "dependencies": {
+    "@symfony/webpack-encore": "^0.21.0",
     "select2": "select2/select2"
+  },
+  "devDependencies": {
+    "node-sass": "^4.10.0",
+    "sass-loader": "^7.0.1"
   }
 }

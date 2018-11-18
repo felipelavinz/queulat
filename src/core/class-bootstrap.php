@@ -16,8 +16,10 @@ class Bootstrap {
 		$this->register_default_node_factory_args();
 	}
 	public function enqueue_assets() {
-		$styles_path = WPMU_PLUGIN_URL . '/queulat/dist/admin.css';
-		wp_enqueue_style( 'queulat-forms', $styles_path, [], null, 'all' );
+		static $asset_versions;
+		$versions_path  = __DIR__ .'/../../dist/manifest.json';
+		$asset_versions = json_decode( file_get_contents( $versions_path ) );
+		wp_enqueue_style( 'queulat-forms', plugins_url( '..' . $asset_versions->{'dist/admin.css'}, __DIR__ ), [], null, 'all' );
 	}
 	private function register_default_node_factory_args() {
 		$handlers = [

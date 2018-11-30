@@ -88,7 +88,7 @@ class Custom_Post_Type_Plugin {
 
 		// replace "stub" in stub file names with the file name
 		$stub   = $template_vars['file_name'];
-		$prefix = 'ead-';
+		$prefix = apply_filters( 'quelat_generate_builder_ctp_plugin', 'queulat-' );
 
 		$loader       = new \Twig_Loader_Filesystem( __DIR__ . '/../stubs' );
 		$twig         = new \Twig_Environment( $loader, [] );

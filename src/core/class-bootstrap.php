@@ -3,6 +3,7 @@
 namespace Queulat;
 
 use Queulat\Forms\Node_Factory;
+use Queulat\Generator\CLI\Generate_Command;
 use Queulat\Forms\Node_Factory_Argument_Handler;
 
 class Bootstrap {
@@ -14,6 +15,13 @@ class Bootstrap {
 		);
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_assets' ], 9999 );
 		$this->register_default_node_factory_args();
+		$this->register_cli_commands();
+	}
+	public function register_cli_commands() {
+		if ( ! defined( 'WP_CLI' ) || ! WP_CLI ) {
+			return;
+		}
+		\WP_CLI::add_command( 'queulat:generate', new Generate_Command );
 	}
 	public function enqueue_assets() {
 		static $asset_versions;

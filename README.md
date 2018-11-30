@@ -35,15 +35,11 @@
 
 <!-- @todo -->
 
-## Creating new elements or components
-
-<!-- @todo -->
-
 ## Creating new form views
 
 <!-- @todo -->
 
-## Creating form elements with Node_Factory
+## Instantiating form elements with Node_Factory
 
 `Node_Factory`it's a simple factory class that's able to create any kind of form element.
 
@@ -99,25 +95,25 @@ $submit = Node_Factory::make(
 echo $submit;
 ```
 
-# Node_Factory
+## Node_Factory
 
-## Registering new argument handlers
+### Registering new argument handlers
 
 You can register new arguments used by the Node_Factory using the `register_argument` method.
 
 This method takes a `Node_Factory_Argument_Handler`, which needs:
 
-* An $argument (string) which is the name of the argument key that you'll handle.
-* A $method (string) which is the name of the method that will receive the parameters used on the factory method.
-* An optional $call_type (string) which determines how the $method will treat the received configuration values.
+* An `$argument` (string) which is the name of the argument key that you'll handle.
+* A `$method` (string) which is the name of the method that will receive the parameters used on the factory method.
+* An optional `$call_type` (string) which determines how the $method will treat the received configuration values.
 
-The $call_type can be one of:
+The `$call_type` can be one of:
 
-Node_Factory::CALL_TYPE_VALUE: pass all arguments as a single array to the handler. This is the default setting. Example: `$obj->$method( $args );`
+`Node_Factory::CALL_TYPE_VALUE`: pass all arguments as a single array to the handler. This is the default setting. Example: `$obj->$method( $args );`
 
-Node_Factory::CALL_ARRAY: pass arguments as individual parameters to the handler. Example: `call_user_func_array( [ $obj, $method ], $args );`
+`Node_Factory::CALL_ARRAY`: pass arguments as individual parameters to the handler. Example: `call_user_func_array( [ $obj, $method ], $args );`
 
-Node_Factory::CALL_KEY_VALUE: for each item in the argument, pass its key and value as parameters to the handler. Example:
+`Node_Factory::CALL_KEY_VALUE`: for each item in the argument, pass its key and value as parameters to the handler. Example:
 
 ```php
 foreach ( $args as $key => $val ) {
@@ -125,11 +121,16 @@ foreach ( $args as $key => $val ) {
 }
 ```
 
-Node_Factory::CALL_TYPE_VALUE_ITEMS: for each item in the argument, use the value as parameter for the handler. Example: `array_walk( $args, [ $obj, $method ] );`
+`Node_Factory::CALL_TYPE_VALUE_ITEMS`: for each item in the argument, use the value as parameter for the handler. Example: `array_walk( $args, [ $obj, $method ] );`
 
 # Interfaces
 
 ## Node_Interface
+
+| Related Interfaces | Related Traits |
+| ------------------ | -------------- |
+| `Component_Interface` | `Node_Trait` |
+| `Element_Interface` | `Childless_Node_Trait` |
 
 Nodes are the lowest level of objects that should be used with forms
 
@@ -186,3 +187,6 @@ Use `Properties_Trait` to help implement this interface.
 ## View_Interface
 
 Base interface to be used by form views.
+
+# Creating new elements or components
+

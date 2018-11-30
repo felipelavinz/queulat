@@ -111,7 +111,7 @@ abstract class Abstract_Admin {
 	public function get_redirect_url() : string {
 		// get the relative path to the WordPress Admin
 		$relative_admin_url = str_replace( home_url(), '', admin_url() );
-		$redirect_url = str_replace( $relative_admin_url, '', filter_input( INPUT_POST, '_wp_http_referer', FILTER_SANITIZE_URL ) );
+		$redirect_url       = str_replace( $relative_admin_url, '', filter_input( INPUT_POST, '_wp_http_referer', FILTER_SANITIZE_URL ) );
 		return $redirect_url;
 	}
 
@@ -124,7 +124,7 @@ abstract class Abstract_Admin {
 	 */
 	public function get_success_url_params() : array {
 		return [
-			'updated' => 'true'
+			'updated' => 'true',
 		];
 	}
 

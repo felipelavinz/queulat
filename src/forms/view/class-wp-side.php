@@ -25,7 +25,7 @@ class WP_Side extends Forms\Form_View {
 				$this->set_input_size( $element );
 				$out     .= '<div class="control-group">';
 					$out .= '<p>';
-				if ( is_callable([ $element, 'get_label'] ) ) {
+				if ( is_callable( [ $element, 'get_label' ] ) ) {
 					$out .= '<label for="' . $element->get_attribute( 'id' ) . '">' . $element->get_label() . '</label>';
 				}
 						$out .= (string) $element;
@@ -44,7 +44,7 @@ class WP_Side extends Forms\Form_View {
 	 * @param Attributes_Interface $element A form element
 	 */
 	protected function set_element_view_attributes( Attributes_Interface &$element ) {
-		$has_id = $element->get_attribute( 'id' );
+		$has_id  = $element->get_attribute( 'id' );
 		$form_id = empty( $this->form->get_attribute( 'id' ) ) ? 'side-form' : $this->form->get_attribute( 'id' );
 		if ( ! $has_id ) {
 			$element->set_attribute( 'id', $form_id . '-' . $this->i );

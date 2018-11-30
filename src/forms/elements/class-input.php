@@ -6,10 +6,10 @@ use Queulat\Forms\Node_Interface;
 use Queulat\Forms\HTML_Form_Element;
 
 class Input extends HTML_Form_Element {
-	protected static $type;
+	protected static $type = 'text';
 	public function __construct( array $properties = array(), $text_content = '' ) {
-		parent::__construct( $properties, $text_content );
 		$this->set_attribute( 'type', static::$type );
+		parent::__construct( $properties, $text_content );
 	}
 	public function get_tag_name() : string {
 		return 'input';

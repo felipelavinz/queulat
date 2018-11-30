@@ -2,12 +2,17 @@
 
 return [
 	'directory_list' => [
-		'../../../wp',
-		'vendor',
 		'src',
+		'vendor',
+		// if this installation it's based on bedrock.
+		'../../../wp',
+		// ... otherwhise, a normal WP install
+		'../../..',
 	],
 	'exclude_analysis_directory_list' => [
 		'../../../wp',
+		'../../../wp-admin',
+		'../../../wp-includes',
 		'vendor',
 	],
 	'analyze_signature_compatibility'             => true,

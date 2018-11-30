@@ -9,7 +9,7 @@ class WP_Media extends Form_Component {
 
 	public static function get_element_attributes() : array {
 		return [
-			'class'
+			'class',
 		];
 	}
 
@@ -19,7 +19,7 @@ class WP_Media extends Form_Component {
 			'multiple' => false,
 			'button'   => [
 				'text' => _x( 'Select file', 'WP_Media button text', 'queulat' ),
-			]
+			],
 		];
 	}
 
@@ -37,19 +37,21 @@ class WP_Media extends Form_Component {
 
 	public function __toString() {
 		if ( $this->get_property( 'test_scripts' ) && ! did_action( 'wp_enqueue_media' ) ) {
-			return (string) Node_Factory::make( Div::class, [
-				'attributes' => [
-					'class' => 'error inline'
-				],
-				'text_content' => '<p>' . __( 'You need to call wp_enqueue_media() on the admin_enqueue_scripts hook', 'queulat' ) . '</p>'
-			] );
+			return (string) Node_Factory::make(
+				Div::class, [
+					'attributes'   => [
+						'class' => 'error inline',
+					],
+					'text_content' => '<p>' . __( 'You need to call wp_enqueue_media() on the admin_enqueue_scripts hook', 'queulat' ) . '</p>',
+				]
+			);
 		}
 
-		// add the "js-queulat-wp-media" class for the js plugin
+		// add the "js-queulat-wp-media" class for the js plugin.
 		$this->add_class( 'js-queulat-wp-media' );
 
-		// get custom instance attributes
-		// you can pass them on an "instance" property or as the "data-wpmedia" attribute
+		// get custom instance attributes.
+		// you can pass them on an "instance" property or as the "data-wpmedia" attribute.
 		$instance = [];
 		if ( $this->get_property( 'instance' ) ) {
 			$instance = $this->get_property( 'instance' );
@@ -69,41 +71,41 @@ class WP_Media extends Form_Component {
 			Node_Factory::make(
 				Div::class, [
 					'attributes' => [
-						'class' => 'thumb-receiver queulat-wpmedia-receiver queulat-wpmedia-sortable'
-					]
+						'class' => 'thumb-receiver queulat-wpmedia-receiver queulat-wpmedia-sortable',
+					],
 				]
 			),
 			Node_Factory::make(
 				Div::class, [
 					'attributes' => [
-						'class' => 'clear'
+						'class' => 'clear',
 					],
-					'children' => [
+					'children'   => [
 						Node_Factory::make(
 							Button::class, [
-								'attributes' => [
+								'attributes'   => [
 									'type'               => 'button',
 									'class'              => 'button queulat-wpmedia-upload',
 									'data-label-add'     => esc_attr( $this->get_upload_button_text() ),
-									'data-label-replace' => esc_attr( $this->get_replace_button_text() )
+									'data-label-replace' => esc_attr( $this->get_replace_button_text() ),
 								],
-								'text_content' => empty( $value ) ? $this->get_upload_button_text() : $this->get_replace_button_text()
+								'text_content' => empty( $value ) ? $this->get_upload_button_text() : $this->get_replace_button_text(),
 							]
-						)
-					]
+						),
+					],
 				]
 			),
 			Node_Factory::make(
 				Div::class, [
-					'text_content' => $this->get_item_template()
+					'text_content' => $this->get_item_template(),
 				]
-			)
+			),
 		];
 
 		$component = Node_Factory::make(
 			Div::class, [
 				'attributes' => $this->get_attributes(),
-				'children'   => $component_children
+				'children'   => $component_children,
 			]
 		);
 

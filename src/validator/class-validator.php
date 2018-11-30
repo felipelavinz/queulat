@@ -48,10 +48,10 @@ class Validator {
 		foreach ( $this->rules as $key => $val ) {
 			if ( is_array( $val ) ) {
 				foreach ( $val as $validator ) {
-					$this->validate_data( $key, $this->data[ $key ] ?? null , $validator );
+					$this->validate_data( $key, $this->data[ $key ] ?? null, $validator );
 				}
 			} else {
-				$this->validate_data( $key, $this->data[ $key ] ?? null , $val );
+				$this->validate_data( $key, $this->data[ $key ] ?? null, $val );
 			}
 		}
 

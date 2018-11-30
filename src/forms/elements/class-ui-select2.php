@@ -28,9 +28,12 @@ class UI_Select2 extends Form_Component implements Option_Node_Interface {
 
 		static::enqueue_assets();
 
-		$select = new Select;
+		$select = new Select();
 		$select->set_attributes( $this->get_attributes() );
 		$select->add_class( 'select-2' );
+		if ( isset( $this->get_property( 'instance' )['multiple'] ) && $this->get_property( 'instance' )['multiple'] ) {
+			$select->set_attribute( 'multiple', 'multiple' );
+		}
 		$select->set_name( $this->get_name() );
 		$select->set_options( $this->get_options() );
 		$select->set_value( $this->get_value() );

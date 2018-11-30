@@ -47,7 +47,7 @@ class Custom_Post_Type {
 		];
 	}
 	public function sanitize_input( array $input ) : array {
-		$flat = Arrays::flatten( $input );
+		$flat      = Arrays::flatten( $input );
 		$sanitized = [];
 		foreach ( $flat as $key => $val ) {
 			switch ( $key ) {
@@ -85,7 +85,7 @@ class Custom_Post_Type {
 				case 'rewrite_enable':
 					$sanitized[ $key ] = (bool) $val;
 				default:
-					if ( stripos($key, 'supports.') !== false  ) {
+					if ( stripos( $key, 'supports.' ) !== false ) {
 						if ( array_key_exists( $val, static::get_supports() ) ) {
 							$sanitized[ $key ] = $val;
 						}

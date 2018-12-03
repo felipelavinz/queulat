@@ -4,7 +4,7 @@ namespace Queulat\Forms;
 
 abstract class Form_Component extends Component implements Form_Node_Interface {
 
-	protected $name;
+	protected $name = '';
 	protected $value;
 
 	public function set_name( string $name ) : Node_Interface {

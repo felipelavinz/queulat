@@ -2,8 +2,6 @@
 
 namespace Queulat\Forms;
 
-use Underscore\Types\Arrays;
-
 /**
  * HTML elements are objects that behave like... HTML elements
  */

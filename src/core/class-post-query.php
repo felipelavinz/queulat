@@ -19,7 +19,6 @@
 namespace Queulat;
 
 use WP_Query;
-use WP_Post_Type;
 
 abstract class Post_Query implements \Iterator, \Countable {
 

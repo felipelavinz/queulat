@@ -1,3 +1,43 @@
+# Installation
+
+Install with [Composer](https://getcomposer.org/):
+
+`composer require felipelavinz/queulat:dev-master`
+
+Composer will install on `wp-content/mu-plugins/queulat`
+
+If you need to install on a different folder, you should add something like this to your project's composer.json:
+
+```json
+{
+	"extra" : {
+		"installer-paths" : {
+			"htdocs/wp-content/mu-plugins/{$name}" : ["type:wordpress-muplugin"]
+		}
+	}
+}
+```
+
+Where `htdocs/wp-content/mu-plugins/{$name}` it's the path to your mu-plugins directory. Queulat will be installed as a sub-folder on the specified folder.
+
+## Loading Queulat as mu-plugin
+
+Since mu-plugins installed on a sub-folder are not automatically loaded by WordPress you must manually require the main file, which you can do with a single file right on the mu-plugins folder, such as:
+
+```php
+<?php
+/**
+ * Plugin Name: Queulat Loader
+ * Description: Load Queulat mu-plugin
+ */
+
+require_once __DIR__ .'/queulat/queulat.php';
+```
+
+Plugin headers are optional, but recommended.
+
+You could also use something like [Bedrock's autoloader](https://github.com/roots/bedrock/blob/master/web/app/mu-plugins/bedrock-autoloader.php), which will load all mu-plugins installed on sub-folders (you can just copy that file on your mu-plugin folder and it will automagically load Queulat).
+
 # Using Queulat Forms
 
 <!-- @todo: add general description -->

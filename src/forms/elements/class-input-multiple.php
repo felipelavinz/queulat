@@ -1,5 +1,7 @@
 <?php
 
+namespace Queulat\Forms\Element;
+
 use Queulat\Forms\Form_Component;
 use Queulat\Forms\Node_Factory;
 use Queulat\Forms\Element\Div;

@@ -45,9 +45,9 @@ abstract class Abstract_Admin {
 	/**
 	 * Get the form elements that compose the admin page
 	 *
-	 * @return iterable
+	 * @return array
 	 */
-	abstract public function get_form_elements() : iterable;
+	abstract public function get_form_elements() : array;
 
 	/**
 	 * Sanitize form pdata

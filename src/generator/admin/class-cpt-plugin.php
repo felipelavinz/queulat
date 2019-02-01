@@ -38,7 +38,7 @@ class CPT_Plugin extends Abstract_Admin {
 	public function get_icon() : string {
 		return '';
 	}
-	public function get_form_elements() : iterable {
+	public function get_form_elements() : array {
 		return [
 			Node_Factory::make(
 				Input_Text::class, [

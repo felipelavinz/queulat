@@ -22,7 +22,11 @@ Where `htdocs/wp-content/mu-plugins/{$name}` it's the path to your mu-plugins di
 
 ## Loading Queulat as mu-plugin
 
-Since mu-plugins installed on a sub-folder are not automatically loaded by WordPress you must manually require the main file, which you can do with a single file right on the mu-plugins folder, such as:
+Queulat uses the Composer autoloader to lazy-load most of its code, so you need to make sure that the autoloader is included before initializing Queulat.
+
+Also, since mu-plugins installed on a sub-folder are not automatically loaded by WordPress you must manually require the main file.
+
+You can solve this with a single file on the mu-plugins folder, such as:
 
 ```php
 <?php
@@ -31,6 +35,10 @@ Since mu-plugins installed on a sub-folder are not automatically loaded by WordP
  * Description: Load Queulat mu-plugin
  */
 
+// Load Composer autoloader (ABSPATH it's the path to wp-load.php).
+require_once ABSPATH .'/../vendor/autoload.php';
+
+// Load Queulat main file.
 require_once __DIR__ .'/queulat/queulat.php';
 ```
 
@@ -40,11 +48,11 @@ You could also use something like [Bedrock's autoloader](https://github.com/root
 
 # Using Queulat Forms
 
-<!-- @todo: add general description -->
+`@todo: add general description`
 
 ## Available form fields
 
-<!-- @todo: add description for each form field -->
+`@todo: add description for each form field`
 
 * Button
 * Div
@@ -73,11 +81,11 @@ You could also use something like [Bedrock's autoloader](https://github.com/root
 
 ## Validating forms
 
-<!-- @todo -->
+`@todo`
 
 ## Creating new form views
 
-<!-- @todo -->
+`@todo`
 
 ## Instantiating form elements with Node_Factory
 

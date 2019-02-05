@@ -16,6 +16,13 @@ class Custom_Post_Type_Plugin {
 	private $wp_post_type;
 
 	/**
+	 * Hold the raw slug used as post type slug
+	 *
+	 * @var string
+	 */
+	private $raw_slug = '';
+
+	/**
 	 * Build a new Custom Post Type plugin builder
 	 *
 	 * @param string $slug The post type slug
@@ -23,7 +30,9 @@ class Custom_Post_Type_Plugin {
 	 * @see https://codex.wordpress.org/register_post_type#Arguments
 	 */
 	public function __construct( string $slug, array $args ) {
-		$this->wp_post_type = new WP_Post_Type( $slug, $args );
+		$this->raw_slug = $slug;
+		$sanitized_slug = sanitize_key( $slug );
+		$this->wp_post_type = new WP_Post_Type( $sanitized_slug, $args );
 	}
 
 	/**
@@ -62,7 +71,7 @@ class Custom_Post_Type_Plugin {
 	public function get_template_vars() : array {
 		$label               = $this->wp_post_type->label;
 		$file_name           = strtolower( Strings::toKebabCase( $this->wp_post_type->name ) );
-		$class_name          = Strings::toCapitalizedSnakeCase( $this->wp_post_type->name );
+		$class_name          = Strings::toCapitalizedSnakeCase( $this->raw_slug );
 		$description         = $this->wp_post_type->description;
 		$post_type           = $this->wp_post_type->name;
 		$post_type_arguments = Renderer::ident( $this->render_post_type_arguments(), 3 );

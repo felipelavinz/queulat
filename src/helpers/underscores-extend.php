@@ -97,9 +97,11 @@ Strings::extend(
  */
 Strings::extend(
 	'toCapitalizedSnakeCase', function( string $string, int $limit = 0 ) : string {
-		$string = Strings::toSnakeCase( $string, $limit );
-		$string = Strings::explode( $string, '_' );
-		$string = array_map( 'ucfirst', $string );
+		$string = preg_replace( '/[^a-zA-Z0-9]/', '-', $string );
+		$string = Strings::explode( $string, '-' );
+		$string = array_map( function( $item ){
+			return strtoupper( $item[0] ) . substr( $item, 1 );
+		}, $string );
 		return implode( '_', $string );
 	}
 );

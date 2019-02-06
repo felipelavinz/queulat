@@ -52,7 +52,7 @@ class Custom_Post_Type {
 		foreach ( $flat as $key => $val ) {
 			switch ( $key ) {
 				case 'slug':
-					$sanitized[ $key ] = sanitize_key( $val );
+					$sanitized[ $key ] = $val;
 					break;
 				case 'description':
 					$sanitized[ $key ] = sanitize_textarea_field( $val );

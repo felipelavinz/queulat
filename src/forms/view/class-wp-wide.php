@@ -9,9 +9,9 @@ use Queulat\Forms\Element_Interface;
 use Queulat\Forms\Element\Input_Text;
 use Queulat\Forms\Component_Interface;
 use Queulat\Forms\Form_Node_Interface;
-use Queulat\Forms\Form_Element_Interface;
 use Queulat\Forms\Attributes_Interface;
 use Queulat\Forms\Properties_Interface;
+use Queulat\Forms\Form_Element_Interface;
 
 class WP_Wide extends Forms\Form_View {
 	private $i = 1;

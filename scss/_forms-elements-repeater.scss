@@ -1,0 +1,37 @@
+.queulat-repeater__row {
+	padding: 15px 20px;
+	margin-left: -20px;
+	&:first-of-type {
+		margin-top: -15px;
+	}
+	&:nth-of-type( 2n ) {
+		background: #f3f4f5;
+	}
+	&:nth-of-type( -1 ) {
+		margin-bottom: 15px;
+	}
+}
+.queulat-repeater__group {
+	margin-bottom: 15px;
+}
+.queulat-repeater__label {
+	margin-bottom: 5px;
+}
+.queulat-repeater__row-actions {
+	button {
+		margin-right: 5px !important;
+		.dashicons {
+			position: relative;
+			top: 3px;
+		}
+	}
+}
+.queulat-repeater__actions {
+	margin-top: 15px;
+	button {
+		.dashicons {
+			position: relative;
+			top: 4px;
+		}
+	}
+}

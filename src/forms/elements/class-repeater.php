@@ -158,6 +158,9 @@ class Repeater extends Form_Component implements Node_Interface {
 		$container->append_child( Node_Factory::make(
 			Div::class,
 			[
+				'attributes' => [
+					'class' => 'queulat-repeater__actions'
+				],
 				'children' => [
 					Node_Factory::make(
 						Button::class,

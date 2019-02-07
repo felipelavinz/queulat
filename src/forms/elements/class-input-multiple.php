@@ -28,7 +28,7 @@ class Input_Multiple extends Form_Component {
 		$container->add_class( 'js-queulat-input-multiple' );
 		$container->add_class( 'queulat-input-multiple' );
 		$input_type = $this->get_attribute( 'type' ) ?: 'text';
-		$values     = $this->get_value();
+		$values     = (array) $this->get_value();
 		if ( ( is_array( $values ) && empty( array_filter( $values ) ) ) || empty( $values ) ) {
 			$values = [];
 		}

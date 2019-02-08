@@ -25,8 +25,9 @@ function queulat_sanitizer( array $data, array $rules ) : array {
 	$input     = Arrays::flatten( $data );
 	$sanitized = [];
 	foreach ( $input as $key => $val ) {
-		foreach ( $rules as $pattern => $callbacks ) {
-			if ( preg_match( '/'. $pattern .'/', $key ) ) {
+		foreach ( $rules as $rule => $callbacks ) {
+			$pattern = str_replace( '\*', '[^\.]*', preg_quote( $rule ) );
+			if ( (bool) preg_match( '/^'. $pattern .'/', $key ) ) {
 				foreach ( $callbacks as $callback ) {
 					$sanitized[ $key ] = $callback( $val );
 				}

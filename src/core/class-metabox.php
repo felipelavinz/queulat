@@ -85,7 +85,7 @@ abstract class Metabox {
 			$this->post_type = $post_type;
 		}
 		$this->set_args( $args );
-		$this->set_actions();
+		$this->init();
 	}
 
 	public function set_id( $id ) {
@@ -131,7 +131,7 @@ abstract class Metabox {
 	/**
 	 * Set-up common metabox actions
 	 */
-	protected function set_actions() {
+	public function init() {
 		// add meta box
 		add_action( 'add_meta_boxes_' . $this->get_post_type(), array( $this, 'add_metabox' ) );
 		// save

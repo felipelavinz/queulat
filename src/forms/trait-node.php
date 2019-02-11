@@ -37,7 +37,7 @@ trait Node_Trait {
 	 * @return Node_Interface Reference to the same element
 	 * @suppress PhanTypeMismatchReturn
 	 */
-	public function append_children( iterable $nodes ) : Node_Interface {
+	public function append_children( $nodes ) : Node_Interface {
 		foreach ( $nodes as $node ) {
 			$this->append_child( $node );
 		}

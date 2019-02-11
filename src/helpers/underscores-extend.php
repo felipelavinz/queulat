@@ -14,7 +14,7 @@ use Underscore\Types\Strings;
  * @link https://github.com/laravel/framework/blob/be7fbb60376bd61f07e9c637473e5b2cf7eebe5c/src/Illuminate/Support/Arr.php#L279-L292
  */
 Arrays::extend(
-	'isAssociative', function( iterable $array ) : bool {
+	'isAssociative', function( $array ) : bool {
 		$keys = is_array( $array ) ? array_keys( $array ) : array_keys( $array->getArrayCopy() );
 		return array_keys( $keys ) !== $keys;
 	}

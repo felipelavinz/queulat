@@ -202,7 +202,7 @@ class CPT_Plugin extends Abstract_Admin {
 		$validations = [
 			'slug' => [ new Is_Required(), new Max_Length( 20 ), new Value_Not_In( Custom_Post_Type::$reserved_keywords ) ],
 		];
-		if ( isset( $sanitized['show_in_menu'] ) && ! is_bool( $sanitized_data['show_in_menu'] ) ) {
+		if ( isset( $sanitized_data['show_in_menu'] ) && ! is_bool( $sanitized_data['show_in_menu'] ) ) {
 			$validations['show_in_menu'] = [ new Value_In( array_keys( $this->get_parent_menus() ) ) ];
 		}
 		return $validations;

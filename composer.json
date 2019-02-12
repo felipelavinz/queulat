@@ -25,7 +25,7 @@
         ]
     },
     "scripts": {
-        "fix": "phpcbf --standard=WordPress src/",
+        "fix": "phpcbf --standard=WordPress src/ --extensions=php",
         "lint": "parallel-lint ./src --blame --exclude vendor",
         "sniff": "phpcs --standard=WordPress src/",
         "analyze": "phan -p -j 4 --color",
@@ -33,7 +33,7 @@
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "3.*",
-        "wp-coding-standards/wpcs": "^0.14.0",
+        "wp-coding-standards/wpcs": "^2.0",
         "jakub-onderka/php-parallel-lint": "^0.9.2",
         "dealerdirect/phpcodesniffer-composer-installer": "^0.4.3",
         "phan/phan": "^0.10.3",

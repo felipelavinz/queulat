@@ -30,8 +30,8 @@ class Custom_Post_Type_Plugin {
 	 * @see https://codex.wordpress.org/register_post_type#Arguments
 	 */
 	public function __construct( string $slug, array $args ) {
-		$this->raw_slug = $slug;
-		$sanitized_slug = sanitize_key( $slug );
+		$this->raw_slug     = $slug;
+		$sanitized_slug     = sanitize_key( $slug );
 		$this->wp_post_type = new WP_Post_Type( $sanitized_slug, $args );
 	}
 

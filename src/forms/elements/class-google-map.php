@@ -16,13 +16,15 @@ class Google_Map extends Form_Component {
 		$name      = $this->get_name();
 		$value     = $this->get_value();
 		$container = Node_Factory::make(
-			Div::class, [
+			Div::class,
+			[
 				'attributes' => [
 					'class' => 'queulat-gmapsearch',
 				],
 				'children'   => [
 					Node_Factory::make(
-						Input_Text::class, [
+						Input_Text::class,
+						[
 							'name'       => "{$name}[address]",
 							'value'      => $value->address ?? '',
 							'attributes' => [
@@ -32,7 +34,8 @@ class Google_Map extends Form_Component {
 						]
 					),
 					Node_Factory::make(
-						Div::class, [
+						Div::class,
+						[
 							'attributes' => [
 								'class' => 'gmapsearch__canvas',
 								'style' => 'min-height: 360px',
@@ -40,28 +43,32 @@ class Google_Map extends Form_Component {
 						]
 					),
 					Node_Factory::make(
-						Input_Hidden::class, [
+						Input_Hidden::class,
+						[
 							'name'       => "{$name}[lat]",
 							'value'      => $value->lat ?? '',
 							'attributes' => [ 'class' => 'gmapsearch__lat' ],
 						]
 					),
 					Node_Factory::make(
-						Input_Hidden::class, [
+						Input_Hidden::class,
+						[
 							'name'       => "{$name}[lng]",
 							'value'      => $value->lng ?? '',
 							'attributes' => [ 'class' => 'gmapsearch__lng' ],
 						]
 					),
 					Node_Factory::make(
-						Input_Hidden::class, [
+						Input_Hidden::class,
+						[
 							'name'       => "{$name}[zoom]",
 							'value'      => $value->zoom ?? '',
 							'attributes' => [ 'class' => 'gmapsearch__zoom' ],
 						]
 					),
 					Node_Factory::make(
-						Input_Hidden::class, [
+						Input_Hidden::class,
+						[
 							'name'       => "{$name}[components]",
 							'value'      => $value->components ?? '',
 							'attributes' => [ 'class' => 'gmapsearch__components' ],
@@ -93,7 +100,8 @@ class Google_Map extends Form_Component {
 				'hl'        => get_option( 'WPLANG' ) ? current( explode( '_', get_option( 'WPLANG' ) ) ) : 'en',
 				'key'       => static::get_api_key(),
 				'libraries' => 'places',
-			], 'https://maps.googleapis.com/maps/api/js'
+			],
+			'https://maps.googleapis.com/maps/api/js'
 		);
 		wp_enqueue_script( 'google-maps-api', $google_maps_url, [], null );
 	}

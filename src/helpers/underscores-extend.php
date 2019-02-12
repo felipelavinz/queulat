@@ -14,7 +14,8 @@ use Underscore\Types\Strings;
  * @link https://github.com/laravel/framework/blob/be7fbb60376bd61f07e9c637473e5b2cf7eebe5c/src/Illuminate/Support/Arr.php#L279-L292
  */
 Arrays::extend(
-	'isAssociative', function( $array ) : bool {
+	'isAssociative',
+	function( $array ) : bool {
 		$keys = is_array( $array ) ? array_keys( $array ) : array_keys( $array->getArrayCopy() );
 		return array_keys( $keys ) !== $keys;
 	}
@@ -30,7 +31,8 @@ Arrays::extend(
  * @link https://github.com/fuel/core/blob/6c48d4e63bea3c268c97f0cc085a15ef57d40032/classes/arr.php#L382-L422
  */
 Arrays::extend(
-	'reverseFlatten', function( array $array, string $glue = '.' ) : array {
+	'reverseFlatten',
+	function( array $array, string $glue = '.' ) : array {
 		$return = array();
 		foreach ( $array as $key => $value ) {
 			if ( stripos( $key, $glue ) !== false ) {
@@ -64,7 +66,8 @@ Arrays::extend(
  * @return array              Filtered array
  */
 Arrays::extend(
-	'filterRecursive', function( array $array, $callback = null ) {
+	'filterRecursive',
+	function( array $array, $callback = null ) {
 		foreach ( $array as &$value ) {
 			if ( is_array( $value ) ) {
 				$value = $callback === null ? Arrays::filterRecursive( $value ) : Arrays::filterRecursive( $value, $callback );
@@ -82,7 +85,8 @@ Arrays::extend(
  * @return string         String converted to kebab-case
  */
 Strings::extend(
-	'toKebabCase', function( string $string, int $limit = 0 ) : string {
+	'toKebabCase',
+	function( string $string, int $limit = 0 ) : string {
 		$string = Strings::toSnakeCase( $string, $limit );
 		return str_replace( '_', '-', $string );
 	}
@@ -96,12 +100,16 @@ Strings::extend(
  * @return string         String converted to Capitalized_Snake_Case
  */
 Strings::extend(
-	'toCapitalizedSnakeCase', function( string $string, int $limit = 0 ) : string {
+	'toCapitalizedSnakeCase',
+	function( string $string, int $limit = 0 ) : string {
 		$string = preg_replace( '/[^a-zA-Z0-9]/', '-', $string );
 		$string = Strings::explode( $string, '-' );
-		$string = array_map( function( $item ){
-			return strtoupper( $item[0] ) . substr( $item, 1 );
-		}, $string );
+		$string = array_map(
+			function( $item ) {
+					return strtoupper( $item[0] ) . substr( $item, 1 );
+			},
+			$string
+		);
 		return implode( '_', $string );
 	}
 );
@@ -116,7 +124,8 @@ Strings::extend(
  * @return string         The shortened string
  */
 Strings::extend(
-	'limitWords', function( string $string, int $limit, string $end = '' ) : string {
+	'limitWords',
+	function( string $string, int $limit, string $end = '' ) : string {
 		// cleanup the string
 		$string = function_exists( 'wp_strip_all_tags' ) ? wp_strip_all_tags( $string ) : strip_tags( $string );
 

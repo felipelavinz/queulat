@@ -7,7 +7,8 @@ class Entries_Options extends \ArrayIterator {
 	private $current_post;
 	public function __construct( array $params = [], array $flags = [] ) {
 		$args        = wp_parse_args(
-			$params, [
+			$params,
+			[
 				'post_status'    => 'publish',
 				'orderby'        => 'title',
 				'order'          => 'ASC',
@@ -15,14 +16,16 @@ class Entries_Options extends \ArrayIterator {
 			]
 		);
 		$flags       = wp_parse_args(
-			$flags, [
+			$flags,
+			[
 				'show_option_none' => false,
 			]
 		);
 		$this->query = new \WP_Query( $args );
 		if ( isset( $flags['show_option_none'] ) && $flags['show_option_none'] ) {
 			array_unshift(
-				$this->query->posts, (object) [
+				$this->query->posts,
+				(object) [
 					'ID'         => '',
 					'post_title' => is_string( $flags['show_option_none'] ) ? $flags['show_option_none'] : _x( '(None)', 'null entry option', 'queulat' ),
 				]

@@ -38,7 +38,8 @@ class WP_Media extends Form_Component {
 	public function __toString() {
 		if ( $this->get_property( 'test_scripts' ) && ! did_action( 'wp_enqueue_media' ) ) {
 			return (string) Node_Factory::make(
-				Div::class, [
+				Div::class,
+				[
 					'attributes'   => [
 						'class' => 'error inline',
 					],
@@ -69,20 +70,23 @@ class WP_Media extends Form_Component {
 
 		$component_children = [
 			Node_Factory::make(
-				Div::class, [
+				Div::class,
+				[
 					'attributes' => [
 						'class' => 'thumb-receiver queulat-wpmedia-receiver queulat-wpmedia-sortable',
 					],
 				]
 			),
 			Node_Factory::make(
-				Div::class, [
+				Div::class,
+				[
 					'attributes' => [
 						'class' => 'clear',
 					],
 					'children'   => [
 						Node_Factory::make(
-							Button::class, [
+							Button::class,
+							[
 								'attributes'   => [
 									'type'               => 'button',
 									'class'              => 'button queulat-wpmedia-upload',
@@ -96,14 +100,16 @@ class WP_Media extends Form_Component {
 				]
 			),
 			Node_Factory::make(
-				Div::class, [
+				Div::class,
+				[
 					'text_content' => $this->get_item_template(),
 				]
 			),
 		];
 
 		$component = Node_Factory::make(
-			Div::class, [
+			Div::class,
+			[
 				'attributes' => $this->get_attributes(),
 				'children'   => $component_children,
 			]

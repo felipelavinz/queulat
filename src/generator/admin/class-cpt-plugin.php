@@ -41,7 +41,8 @@ class CPT_Plugin extends Abstract_Admin {
 	public function get_form_elements() : array {
 		return [
 			Node_Factory::make(
-				Input_Text::class, [
+				Input_Text::class,
+				[
 					'label'      => _x( 'Post Type slug', 'cpt generator label', 'queulat' ),
 					'name'       => 'slug',
 					'properties' => [
@@ -50,7 +51,8 @@ class CPT_Plugin extends Abstract_Admin {
 				]
 			),
 			Node_Factory::make(
-				Input_Text::class, [
+				Input_Text::class,
+				[
 					'label'      => _x( 'Label', 'cpt generator label', 'queulat' ),
 					'name'       => 'label',
 					'properties' => [
@@ -59,7 +61,8 @@ class CPT_Plugin extends Abstract_Admin {
 				]
 			),
 			Node_Factory::make(
-				Textarea::class, [
+				Textarea::class,
+				[
 					'label'      => _x( 'Description', 'cpt generator label', 'queulat' ),
 					'name'       => 'description',
 					'attributes' => [
@@ -69,7 +72,8 @@ class CPT_Plugin extends Abstract_Admin {
 				]
 			),
 			Node_Factory::make(
-				Input_Radio::class, [
+				Input_Radio::class,
+				[
 					'label'   => _x( 'Public', 'cpt generator label', 'queulat' ),
 					'name'    => 'public',
 					'options' => [
@@ -79,14 +83,16 @@ class CPT_Plugin extends Abstract_Admin {
 				]
 			),
 			Node_Factory::make(
-				Input_Checkbox::class, [
+				Input_Checkbox::class,
+				[
 					'label'   => _x( 'Supports', 'cpt generator label', 'queulat' ),
 					'name'    => 'supports',
 					'options' => Custom_Post_Type::get_supports(),
 				]
 			),
 			Node_Factory::make(
-				Yes_No::class, [
+				Yes_No::class,
+				[
 					'label'      => __( 'Hierarchical', 'queulat' ),
 					'name'       => 'hierarchical',
 					'properties' => [
@@ -95,7 +101,8 @@ class CPT_Plugin extends Abstract_Admin {
 				]
 			),
 			Node_Factory::make(
-				Yes_No::class, [
+				Yes_No::class,
+				[
 					'label'      => __( 'Has archive', 'queulat' ),
 					'name'       => 'has_archive',
 					'properties' => [
@@ -104,19 +111,22 @@ class CPT_Plugin extends Abstract_Admin {
 				]
 			),
 			Node_Factory::make(
-				Fieldset::class, [
+				Fieldset::class,
+				[
 					'properties' => [
 						'label' => __( 'Rewrite', 'queulat' ),
 					],
 					'children'   => [
 						Node_Factory::make(
-							Yes_No::class, [
+							Yes_No::class,
+							[
 								'label' => 'Enable',
 								'name'  => 'rewrite_enable',
 							]
 						),
 						Node_Factory::make(
-							Input_Text::class, [
+							Input_Text::class,
+							[
 								'label'      => 'Slug',
 								'name'       => 'rewrite[slug]',
 								'attributes' => [
@@ -126,19 +136,22 @@ class CPT_Plugin extends Abstract_Admin {
 							]
 						),
 						Node_Factory::make(
-							Yes_No::class, [
+							Yes_No::class,
+							[
 								'label' => 'Prefix with "front"',
 								'name'  => 'rewrite[with_front]',
 							]
 						),
 						Node_Factory::make(
-							Yes_No::class, [
+							Yes_No::class,
+							[
 								'label' => 'Build feeds permastruct',
 								'name'  => 'rewrite[feeds]',
 							]
 						),
 						Node_Factory::make(
-							Yes_No::class, [
+							Yes_No::class,
+							[
 								'label' => 'Build pagination permastruct',
 								'name'  => 'rewrite[pages]',
 							]
@@ -147,25 +160,29 @@ class CPT_Plugin extends Abstract_Admin {
 				]
 			),
 			Node_Factory::make(
-				Yes_No::class, [
+				Yes_No::class,
+				[
 					'label' => 'Can export',
 					'name'  => 'can_export',
 				]
 			),
 			Node_Factory::make(
-				Yes_No::class, [
+				Yes_No::class,
+				[
 					'label' => 'Delete with user',
 					'name'  => 'delete_with_user',
 				]
 			),
 			Node_Factory::make(
-				Yes_No::class, [
+				Yes_No::class,
+				[
 					'label' => 'Show in REST API',
 					'name'  => 'show_in_rest',
 				]
 			),
 			Node_Factory::make(
-				Select::class, [
+				Select::class,
+				[
 					'label'   => _x( 'Show in menu', 'cpt generator label', 'queulat' ),
 					'name'    => 'show_in_menu',
 					'options' => $this->get_parent_menus(),

@@ -28,7 +28,7 @@ class Repeater extends Form_Component implements Node_Interface {
 			[
 				'attributes' => [
 					'class' => 'js-queulat-repeater queulat-repeater',
-				]
+				],
 			]
 		);
 
@@ -38,13 +38,13 @@ class Repeater extends Form_Component implements Node_Interface {
 		do {
 			$row_values = current( $values );
 
-			$row = Node_Factory::make(
+			$row            = Node_Factory::make(
 				Div::class,
 				[
 					'attributes' => [
 						'class'    => 'js-queulat-repeater__row queulat-repeater__row',
-						'data-row' => $row_index
-					]
+						'data-row' => $row_index,
+					],
 				]
 			);
 			$children_index = 0;
@@ -55,8 +55,8 @@ class Repeater extends Form_Component implements Node_Interface {
 					Div::class,
 					[
 						'attributes' => [
-							'class' => 'queulat-repeater__group'
-						]
+							'class' => 'queulat-repeater__group',
+						],
 					]
 				);
 				if ( $child instanceof Form_Node_Interface ) {
@@ -65,19 +65,19 @@ class Repeater extends Form_Component implements Node_Interface {
 							Div::class,
 							[
 								'attributes' => [
-									'class' => 'queulat-repeater__label'
+									'class' => 'queulat-repeater__label',
 								],
-								'children' => [
+								'children'   => [
 									Node_Factory::make(
 										Label::class,
 										[
-											'attributes' => [
-												'for' => 'queulat-repeater__element--'. static::$i .'-'. $row_index .'-'. $children_index
+											'attributes'   => [
+												'for' => 'queulat-repeater__element--' . static::$i . '-' . $row_index . '-' . $children_index,
 											],
-											'text_content' => $child->get_label()
+											'text_content' => $child->get_label(),
 										]
-									)
-								]
+									),
+								],
 							]
 						)
 					);
@@ -87,9 +87,9 @@ class Repeater extends Form_Component implements Node_Interface {
 					$child->set_value( $row_values[ $child->get_name() ] );
 				}
 
-				$child->set_attribute( 'data-name', $this->get_name() .'[__i__]['. $child->get_name() .']' );
+				$child->set_attribute( 'data-name', $this->get_name() . '[__i__][' . $child->get_name() . ']' );
 				$child->set_attribute( 'data-row', $row_index );
-				$child->set_name( $this->get_name() .'['. $row_index .']['. $child->get_name() .']' );
+				$child->set_name( $this->get_name() . '[' . $row_index . '][' . $child->get_name() . ']' );
 				$child->add_class( 'js-queulat-repeater__control' );
 
 				$group->append_child(
@@ -99,9 +99,9 @@ class Repeater extends Form_Component implements Node_Interface {
 							'attributes' => [
 								'class' => 'queulat-repeater__control',
 							],
-							'children' => [
-								$child
-							]
+							'children'   => [
+								$child,
+							],
 						]
 					)
 				);
@@ -112,27 +112,27 @@ class Repeater extends Form_Component implements Node_Interface {
 					Div::class,
 					[
 						'attributes' => [
-							'class' => 'queulat-repeater__row-actions'
+							'class' => 'queulat-repeater__row-actions',
 						],
 						'children'   => [
 							Node_Factory::make(
 								Button::class,
 								[
 									'text_content' => sprintf( _x( '%s Move Up', 'repeater', 'queulat' ), '<span class="dashicons dashicons-arrow-up-alt2"></span>' ),
-									'attributes' => [
+									'attributes'   => [
 										'type'  => 'button',
-										'class' => 'js-queulat-repeater__up button'
-									]
+										'class' => 'js-queulat-repeater__up button',
+									],
 								]
 							),
 							Node_Factory::make(
 								Button::class,
 								[
 									'text_content' => sprintf( _x( '%s Move Down', 'repeater', 'queulat' ), '<span class="dashicons dashicons-arrow-down-alt2"></span>' ),
-									'attributes' => [
+									'attributes'   => [
 										'type'  => 'button',
-										'class' => 'js-queulat-repeater__down button'
-									]
+										'class' => 'js-queulat-repeater__down button',
+									],
 								]
 							),
 							Node_Factory::make(
@@ -141,11 +141,11 @@ class Repeater extends Form_Component implements Node_Interface {
 									'text_content' => _x( 'Remove group', 'repeater', 'queulat' ),
 									'attributes'   => [
 										'type'  => 'button',
-										'class' => 'js-queulat-repeater__remove button button-link-delete'
-									]
+										'class' => 'js-queulat-repeater__remove button button-link-delete',
+									],
 								]
 							),
-						]
+						],
 					]
 				)
 			);
@@ -155,26 +155,28 @@ class Repeater extends Form_Component implements Node_Interface {
 
 		} while ( next( $values ) );
 
-		$container->append_child( Node_Factory::make(
-			Div::class,
-			[
-				'attributes' => [
-					'class' => 'queulat-repeater__actions'
-				],
-				'children' => [
-					Node_Factory::make(
-						Button::class,
-						[
-							'attributes' => [
-								'type' => 'button',
-								'class' => 'js-queulat-repeater__add button button-primary'
-							],
-							'text_content' => sprintf( _x('%s New group', 'repeater', 'queulat' ), '<span class="dashicons dashicons-plus"></span>' )
-						]
-					)
+		$container->append_child(
+			Node_Factory::make(
+				Div::class,
+				[
+					'attributes' => [
+						'class' => 'queulat-repeater__actions',
+					],
+					'children'   => [
+						Node_Factory::make(
+							Button::class,
+							[
+								'attributes'   => [
+									'type'  => 'button',
+									'class' => 'js-queulat-repeater__add button button-primary',
+								],
+								'text_content' => sprintf( _x( '%s New group', 'repeater', 'queulat' ), '<span class="dashicons dashicons-plus"></span>' ),
+							]
+						),
+					],
 				]
-			]
-		) );
+			)
+		);
 
 		wp_enqueue_script( 'queulat-element-wp-media', plugins_url( 'js/element-repeater.js', __FILE__ ), array( 'jquery' ) );
 

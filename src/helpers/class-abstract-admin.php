@@ -192,7 +192,8 @@ abstract class Abstract_Admin {
 		}
 		$form->append_child(
 			Node_Factory::make(
-				Input_Hidden::class, [
+				Input_Hidden::class,
+				[
 					'name'  => 'action',
 					'value' => $this->get_id() . '__submit',
 				]
@@ -200,7 +201,8 @@ abstract class Abstract_Admin {
 		);
 		$form->append_child(
 			Node_Factory::make(
-				Button::class, [
+				Button::class,
+				[
 					'attributes'   => [
 						'type'  => 'submit',
 						'class' => 'button button-primary',
@@ -211,7 +213,8 @@ abstract class Abstract_Admin {
 		);
 		$form->append_child(
 			Node_Factory::make(
-				WP_Nonce::class, [
+				WP_Nonce::class,
+				[
 					'properties' => [
 						'action' => "{$this->get_id()}__submit",
 						'name'   => "_{$this->get_id()}__submit-nonce",

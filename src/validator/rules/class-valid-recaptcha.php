@@ -8,7 +8,8 @@ use Queulat\Forms\Element\Recaptcha;
 class Valid_Recaptcha implements Validator_Interface {
 	public function is_valid( $value ) : bool {
 		$request = wp_remote_post(
-			'https://www.google.com/recaptcha/api/siteverify', [
+			'https://www.google.com/recaptcha/api/siteverify',
+			[
 				'body' => [
 					'secret'   => Recaptcha::get_site_secret(),
 					'response' => $value,

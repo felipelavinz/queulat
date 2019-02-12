@@ -10,7 +10,8 @@ class Recaptcha extends Form_Component {
 	use Form_Control_Trait;
 	public function __toString() {
 		$div = Node_Factory::make(
-			Div::class, [
+			Div::class,
+			[
 				'attributes' => [
 					'class'        => 'g-recaptcha',
 					'data-sitekey' => static::get_site_key(),

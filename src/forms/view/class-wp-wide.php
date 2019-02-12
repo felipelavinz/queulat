@@ -7,11 +7,13 @@ use Queulat\Forms\Element;
 use Queulat\Forms\Element\Fieldset;
 use Queulat\Forms\Element_Interface;
 use Queulat\Forms\Element\Input_Text;
+use Queulat\Forms\Element\Input_Hidden;
 use Queulat\Forms\Component_Interface;
 use Queulat\Forms\Form_Node_Interface;
 use Queulat\Forms\Attributes_Interface;
 use Queulat\Forms\Properties_Interface;
 use Queulat\Forms\Form_Element_Interface;
+use Queulat\Forms\Element\WP_Nonce;
 
 class WP_Wide extends Forms\Form_View {
 	private $i = 1;
@@ -39,7 +41,7 @@ class WP_Wide extends Forms\Form_View {
 				$out                 .= '</tr>';
 			} elseif ( $element instanceof Element_Interface || $element instanceof Form_Node_Interface ) {
 				$this->set_element_view_attributes( $element );
-				if ( $element instanceof Element\Input_Hidden ) {
+				if ( $element instanceof Input_Hidden || $element instanceof WP_Nonce ) {
 					$out         .= '<tr class="hidden">';
 						$out     .= '<td colspan="2">';
 							$out .= (string) $element;

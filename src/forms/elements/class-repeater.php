@@ -178,7 +178,7 @@ class Repeater extends Form_Component implements Node_Interface {
 			)
 		);
 
-		wp_enqueue_script( 'queulat-element-wp-media', plugins_url( 'js/element-repeater.js', __FILE__ ), array( 'jquery' ) );
+		wp_enqueue_script( 'queulat-element-repeater', plugins_url( 'js/element-repeater.js', __FILE__ ), array( 'jquery' ) );
 
 		return (string) $container;
 	}

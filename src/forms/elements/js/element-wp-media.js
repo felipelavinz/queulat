@@ -88,6 +88,10 @@
 							);
 						}
 						$receiver.html( selected );
+						$( this ).find('.queulat-wpmedia-sortable').sortable({
+							containment: 'parent',
+							items: '.queulat-wpmedia-sortable-item'
+						});
 					}
 				);
 		}

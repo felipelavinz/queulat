@@ -1,3 +1,12 @@
+.queulat-form .ui-sortable-placeholder {
+  border: 2px dashed #ccc;
+  visibility: visible !important;
+}
+
+.queulat-form .ui-sortable-placeholder > * {
+  visibility: hidden;
+}
+
 .queulat-repeater__row {
   padding: 15px 20px;
   margin-left: -20px;

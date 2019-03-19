@@ -1,0 +1,9 @@
+.queulat-form {
+	.ui-sortable-placeholder {
+		border: 2px dashed #ccc;
+		visibility: visible !important;
+		& > * {
+			visibility: hidden;
+		}
+	}
+}

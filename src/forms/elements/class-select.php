@@ -52,9 +52,9 @@ class Select extends Forms\HTML_Form_Element implements Forms\Option_Node_Interf
 		if ( ! Arrays::isAssociative( $options ) ) {
 			$options = array_combine( $options, $options );
 		}
-		foreach ( $options as $key => &$val ) {
+		foreach ( $options as $key => $val ) {
 			if ( is_array( $val ) && ! Arrays::isAssociative( $val ) ) {
-				$val = array_combine( $val, $val );
+				$options[ $key ] = array_combine( $val, $val );
 			}
 		}
 		return $options;

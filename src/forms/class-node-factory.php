@@ -2,6 +2,8 @@
 
 namespace Queulat\Forms;
 
+use Underscore\Types\Arrays;
+
 /**
  * Node Factory creates any kind of form element or component
  */
@@ -71,7 +73,8 @@ class Node_Factory {
 		if ( ! class_exists( $element_name ) ) {
 			throw new \LogicException( sprintf( _x( "The '%s' element doesn't exists", 'node factory exception', 'queulat' ), $element_name ) );
 		}
-		$obj = new $element_name();
+		$obj  = new $element_name();
+		$args = Arrays::reverseFlatten( $args );
 		static::configure( $obj, $args );
 		return $obj;
 	}

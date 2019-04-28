@@ -128,7 +128,11 @@ class WP_Media extends Form_Component {
 			<div class="thumbnail">
 				<% if ( ! _.isEmpty( attributes.sizes ) ) { %>
 				<div class="centered">
-					<img src="<%- attributes.sizes.thumbnail.url %>" alt="<%- attributes.title %>" width="<%- attributes.sizes.thumbnail.width %>" heigt="<%- attributes.sizes.thumbnail.height %>">
+					<% if ( ! _.isEmpty( attributes.sizes.thumbnail ) ) { %>
+						<img src="<%- attributes.sizes.thumbnail.url %>" alt="<%- attributes.title %>" width="<%- attributes.sizes.thumbnail.width %>" heigt="<%- attributes.sizes.thumbnail.height %>">
+					<% } else { %>	
+						<img src="<%- attributes.sizes.full.url %>" alt="<%- attributes.title %>" width="<%- attributes.sizes.full.width %>" heigt="<%- attributes.sizes.full.height %>">
+					<% } %>
 				</div>
 				<% } else { %>
 				<div class="centered">

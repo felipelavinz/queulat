@@ -83,7 +83,9 @@
 						if ( ! _.isEmpty( values ) ) {
 							values.forEach(
 								function( item ){
-									selected += item_template( { attributes: item } );
+									if ( item ) {
+										selected += item_template( { attributes: item } );
+									}
 								}
 							);
 						}

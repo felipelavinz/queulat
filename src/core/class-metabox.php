@@ -241,11 +241,11 @@ abstract class Metabox {
 		}
 
 		// no data sent
-		if ( ! isset( $_POST[ $this->get_id() . '_metabox' ] ) ) {
+		if ( ! isset( $_POST[ $this->get_id() . '_metabox' ] ) && ! isset( $_POST[ $this->id . '_nonce' ] ) ) {
 			return;
 		}
 
-		$data = $_POST[ $this->get_id() . '_metabox' ];
+		$data = (array) $_POST[ $this->get_id() . '_metabox' ];
 		$data = Arrays::filterRecursive( $data );
 
 		// no need for slashes; WordPress will take care of sanitizing when using "add/update_post_meta"

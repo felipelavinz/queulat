@@ -130,7 +130,7 @@ class WP_Media extends Form_Component {
 				<div class="centered">
 					<% if ( ! _.isEmpty( attributes.sizes.thumbnail ) ) { %>
 						<img src="<%- attributes.sizes.thumbnail.url %>" alt="<%- attributes.title %>" width="<%- attributes.sizes.thumbnail.width %>" heigt="<%- attributes.sizes.thumbnail.height %>">
-					<% } else { %>	
+					<% } else { %>
 						<img src="<%- attributes.sizes.full.url %>" alt="<%- attributes.title %>" width="<%- attributes.sizes.full.width %>" heigt="<%- attributes.sizes.full.height %>">
 					<% } %>
 				</div>
@@ -143,7 +143,7 @@ class WP_Media extends Form_Component {
 				</div>
 				<% } %>
 			</div>
-			<button type="button" class="button-link attachment-close media-modal-icon"><span class="screen-reader-text">{$remove_lbl}</span></button>
+			<button type="button" class="button-link attachment-close media-modal-icon queulat-wpmedia-item-remove"><span class="screen-reader-text">{$remove_lbl}</span></button>
 		</div>
 		<input type="hidden" class="queulat-wpmedia-value" name="{$name}" value="<%- attributes.id %>">
 	</div>

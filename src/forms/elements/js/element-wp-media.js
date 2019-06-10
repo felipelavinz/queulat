@@ -46,33 +46,34 @@
 				}
 			);
 
+			var renderItems = function( items ) {
+				var selected = '';
+				items.forEach(
+					function(item){
+						selected += item_template( item );
+					}
+				);
+				return selected;
+			}
+
 			// When an image is selected, run a callback.
 			file_frame.on(
 				'select', function() {
-					var selection = file_frame.state().get( 'selection' ),
-					selected      = '';
-					$receiver.html( '' );
-					selection.forEach(
-						function(item){
-							selected += item_template( item );
-						}
-					);
-					$receiver.html( selected );
+					var selection = file_frame.state().get( 'selection' );
+					$receiver.html( renderItems( selection ) );
 				}
 			);
 
 			file_frame.open();
-			$container.on(
-				'click', 'button.attachment-close', function(){
-					$( this ).closest( 'div.queulat-wpmedia-item' ).fadeOut(
-						'fast', function(){
-							$( this ).remove();
-						}
-					);
-				}
-			);
 		}
-	).ready(
+	).on( 'click', 'button.queulat-wpmedia-item-remove', function( event ){
+		event.preventDefault();
+		$( this ).closest( 'div.queulat-wpmedia-item' ).fadeOut(
+			'fast', function(){
+				$(this).remove();
+			}
+		);
+	} ).ready(
 		function(){
 				$( '.js-queulat-wp-media' ).each(
 					function(){

@@ -24,7 +24,7 @@ class Input_Radio extends Input implements Forms\Option_Node_Interface {
 	public function render_element( $value, $label ) {
 		static $i = 1;
 		$name     = $this->get_name();
-		$checked  = ! empty( $this->get_value() ) && $value == $this->get_value() ? ' checked="checked"' : '';
+		$checked  = $this->get_value() != '' && $value == $this->get_value() ? ' checked="checked"' : '';
 		$out      = '';
 		$out     .= '<li>';
 		$out     .= '<label>';

@@ -33,6 +33,9 @@ class Repeater extends Form_Component implements Node_Interface {
 		);
 
 		$values = (array) $this->get_value();
+		if ( ! is_array( current( $values ) ) ) {
+			$values = [ $values ];
+		}
 
 		$row_index = 0;
 		do {

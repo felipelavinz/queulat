@@ -19,7 +19,7 @@ class Recaptcha extends Form_Component {
 			]
 		);
 		wp_enqueue_script( 'recaptcha', 'https://www.google.com/recaptcha/api.js', [], null, true );
-		return $div;
+		return (string) $div;
 	}
 	public static function get_site_key() : string {
 		if ( defined( 'RECAPTCHA_SITE_KEY' ) ) {

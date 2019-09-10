@@ -222,8 +222,18 @@ abstract class Abstract_Admin {
 				]
 			)
 		);
+
 		echo '<div class="wrap">';
 		echo "<h1>{$this->get_title()}</h1>";
+
+		/**
+		 * Allows for customization of the search form or printing stuff just before it
+		 *
+		 * @param Queulat\Forms\Element\Form $form
+		 * @param static Instantiated admin
+		 */
+		do_action( "queulat_abstract_admin_form_{$this->get_id()}", $form, $this );
+
 		echo (string) $form;
 		echo '</div>';
 	}

@@ -2,7 +2,6 @@
 
 namespace Queulat\Forms\Element;
 
-use Queulat\Forms\Node_Interface;
 use Queulat\Forms\HTML_Element;
 
 class Fieldset extends HTML_Element {

@@ -288,8 +288,16 @@ abstract class Metabox {
 		do_action( $this->get_id() . '_metabox_data_update', $data, $post_id, $post, $this );
 
 		foreach ( $this->get_fields() as $element ) {
-			if ( is_callable( [ $element, 'get_name' ] ) ) {
-				$this->update_post_meta( $post_id, $element->get_name(), $data );
+			if ( $element instanceof Fieldset ) {
+				foreach ( $element->get_children() as $child ) {
+					if ( is_callable( [ $child, 'get_name' ] ) ) {
+						$this->update_post_meta( $post_id, $child->get_name(), $data );
+					}
+				}
+			} else {
+				if ( is_callable( [ $element, 'get_name' ] ) ) {
+					$this->update_post_meta( $post_id, $element->get_name(), $data );
+				}
 			}
 		}
 

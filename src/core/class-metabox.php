@@ -2,6 +2,7 @@
 
 namespace Queulat;
 
+use Queulat\Forms\Element\Fieldset;
 use Underscore\Types\Arrays;
 use Queulat\Forms\Element\WP_Nonce;
 use Queulat\Forms\Form_Node_Interface;
@@ -174,24 +175,9 @@ abstract class Metabox {
 			$form->set_view( 'Queulat\Forms\View\WP_Side' );
 		}
 		$fields = $this->get_fields();
-		foreach ( $fields as &$field ) {
-			if ( $field instanceof Form_Node_Interface ) {
-				$value = get_post_meta( $post->ID, $this->get_field_key( $field ), false );
-				switch ( count( $value ) ) {
-					case 0:
-						// no value, skip
-						break;
-					case 1:
-						// if it's a single value, set as string
-						$field->set_value( current( $value ) );
-						break;
-					default:
-						// ... otherwhise, as array
-						$field->set_value( $value );
-						break;
-				}
-				$field->set_name( $this->get_id() . '_metabox[' . $field->get_name() . ']' );
-			}
+		foreach ( $fields as $field ) {
+			$this->prepare_field( $field );
+
 			/**
 			 * Enable further customization on a metabox form field
 			 *
@@ -200,6 +186,7 @@ abstract class Metabox {
 			 * @param Queulat\Metabox $this The metabox instance (passed by reference)
 			 */
 			do_action_ref_array( 'queulat_metabox_field', array( &$field, &$form, &$this ) );
+
 			$form->append_child( $field );
 		}
 
@@ -210,6 +197,36 @@ abstract class Metabox {
 		$form->append_child( $nonce );
 
 		echo $form;
+	}
+
+	/**
+	 * Set field value from post meta and prefix name with form id
+	 *
+	 * @param Element_Interface $field
+	 */
+	private function prepare_field( $field ) {
+		global $post;
+		if ( $field instanceof Fieldset ) {
+			foreach ( $field->get_children() as $child ) {
+				$this->prepare_field( $child );
+			}
+		} elseif ( $field instanceof Form_Node_Interface ) {
+			$value = get_post_meta( $post->ID, $this->get_field_key( $field ), false );
+			switch ( count( $value ) ) {
+				case 0:
+					// no value, skip
+					break;
+				case 1:
+					// if it's a single value, set as string
+					$field->set_value( current( $value ) );
+					break;
+				default:
+					// ... otherwhise, as array
+					$field->set_value( $value );
+					break;
+			}
+			$field->set_name( $this->get_id() . '_metabox[' . $field->get_name() . ']' );
+		}
 	}
 	public function get_field_key( $field ) {
 		return $this->get_id() . '_' . $field->get_name();

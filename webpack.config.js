@@ -4,10 +4,6 @@ Encore
 	.setOutputPath('dist/')
 	.setPublicPath('/dist')
 	.enableSassLoader()
-	.configureCssLoader( function( args ){
-		args.minimize = false;
-		return args;
-	} )
 	.addStyleEntry('admin', './scss/admin.scss')
 	.enableSourceMaps( ! Encore.isProduction() )
 	.cleanupOutputBeforeBuild()

@@ -11,8 +11,8 @@
     "select2": "select2/select2"
   },
   "devDependencies": {
-    "@symfony/webpack-encore": "^0.21.0",
+    "@symfony/webpack-encore": "^0.30",
     "node-sass": "^4.13",
-    "sass-loader": "^7.0.1"
+    "sass-loader": "^8.0"
   }
 }

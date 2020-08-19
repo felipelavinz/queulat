@@ -1,1 +1,9 @@
-{"entrypoints":{"admin":{"css":["dist/admin.e47e6fd1.css"]}}}
+{
+  "entrypoints": {
+    "admin": {
+      "css": [
+        "/dist/admin.07fb407b.css"
+      ]
+    }
+  }
+}

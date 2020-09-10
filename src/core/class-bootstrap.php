@@ -15,6 +15,7 @@ class Bootstrap {
 		);
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_assets' ], 9999 );
 		$this->register_default_node_factory_args();
+		load_muplugin_textdomain( 'queulat', str_replace( WPMU_PLUGIN_DIR, '', __DIR__ ) .'/../../languages' );
 	}
 	public function enqueue_assets() {
 		static $asset_versions;

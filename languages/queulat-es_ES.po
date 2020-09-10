@@ -1,0 +1,380 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/queulat\n"
+"POT-Creation-Date: 2020-09-10T19:09:31-03:00\n"
+"PO-Revision-Date: 2020-09-10 19:24-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.1\n"
+"X-Domain: src\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. Plugin Name of the plugin
+msgid "Queulat"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://www.yukei.net/queulat"
+msgstr "https://www.yukei.net/queulat"
+
+#. Description of the plugin
+msgid "Developers toolset for WordPress"
+msgstr "Developers toolset for WordPress"
+
+#. Author of the plugin
+msgid "Felipe Lavín"
+msgstr "Felipe Lavín"
+
+#. Author URI of the plugin
+msgid "https://www.yukei.net"
+msgstr "https://www.yukei.net"
+
+#: src/core/class-metabox.php:371
+msgid "Error uploading file %s"
+msgstr "Error al subir el archivo %s"
+
+#: src/core/class-metabox.php:415
+msgid "It seems you're not allowed to save data on %s."
+msgstr "Al parecer no tienes permitido guardar los datos de %s."
+
+#: src/core/class-metabox.php:421
+msgid "You are not authorized to edit this content"
+msgstr "No tienes autorización para editar este contenido"
+
+#: src/core/class-post-query.php:79
+msgid "%s must be a subclass of Queulat\\Post_Object"
+msgstr "%s debe ser una subclase de Queulat\\Post_Object"
+
+#: src/core/class-post-query.php:128
+msgid ""
+"The query for this object was already set. You might want to create a new %s"
+msgstr ""
+"La consulta para este objeto ya fue configurada. Quizás quieras crear una "
+"nueva %s"
+
+#: src/core/class-post-type.php:82
+msgid ""
+"You must define %s capabilities or use map_meta_cap and define "
+"capability_type"
+msgstr ""
+"Debes definir las capacidades de %s o utilizar map_meta_cap y definir "
+"capability_type"
+
+#: src/forms/class-node-factory.php:61
+msgctxt "node factory exception"
+msgid "Call to undefined method %s"
+msgstr "Llamando método no definido %s"
+
+#: src/forms/class-node-factory.php:74
+msgctxt "node factory exception"
+msgid "The '%s' element doesn't exists"
+msgstr "El elemento '%s' no existe"
+
+#: src/forms/elements/class-google-map.php:32
+msgid "Search for a location or address"
+msgstr "Buscar una ubicación o dirección"
+
+#: src/forms/elements/class-input-multiple.php:76
+msgctxt "multiple input action"
+msgid "Delete value"
+msgstr "Borrar valor"
+
+#: src/forms/elements/class-input-multiple.php:100
+msgctxt "multiple input action"
+msgid "Add new"
+msgstr "Agregar nuevo"
+
+#: src/forms/elements/class-repeater.php:124
+msgctxt "repeater"
+msgid "%s Move Up"
+msgstr "%s Mover  arriba"
+
+#: src/forms/elements/class-repeater.php:134
+msgctxt "repeater"
+msgid "%s Move Down"
+msgstr "%s Mover abajo"
+
+#: src/forms/elements/class-repeater.php:144
+msgctxt "repeater"
+msgid "Remove group"
+msgstr "Eliminar grupo"
+
+#: src/forms/elements/class-repeater.php:176
+msgctxt "repeater"
+msgid "%s New group"
+msgstr "%s Nuevo grupo"
+
+#: src/forms/elements/class-wp-gallery.php:13
+msgctxt "WP_Gallery button text"
+msgid "Select images"
+msgstr "Seleccionar imágenes"
+
+#: src/forms/elements/class-wp-gallery.php:21
+msgctxt "WP_Gallery button text"
+msgid "Upload or select some existing images"
+msgstr "Subir o seleccionar imágenes existentes"
+
+#: src/forms/elements/class-wp-gallery.php:25
+msgctxt "WP_Gallery button text"
+msgid "Remove images"
+msgstr "Eliminar imágenes"
+
+#: src/forms/elements/class-wp-gallery.php:29
+msgctxt "WP_Gallery button text"
+msgid "Replace images"
+msgstr "Reemplazar imágenes"
+
+#: src/forms/elements/class-wp-image.php:13
+msgctxt "WP_Image button text"
+msgid "Select image"
+msgstr "Seleccionar imagen"
+
+#: src/forms/elements/class-wp-image.php:21
+msgctxt "WP_Image button text"
+msgid "Upload or select an existing image"
+msgstr "Subir o seleccionar una imagen existente"
+
+#: src/forms/elements/class-wp-image.php:25
+msgctxt "WP_Image button text"
+msgid "Remove image"
+msgstr "Eliminar imagen"
+
+#: src/forms/elements/class-wp-image.php:29
+msgctxt "WP_Image button text"
+msgid "Replace image"
+msgstr "Reemplazar imagen"
+
+#: src/forms/elements/class-wp-media.php:21
+msgctxt "WP_Media button text"
+msgid "Select file"
+msgstr "Seleccionar archivo"
+
+#: src/forms/elements/class-wp-media.php:27
+msgctxt "WP_Media button text"
+msgid "Upload or select an existing file"
+msgstr "Subir o seleccionar un archivo existente"
+
+#: src/forms/elements/class-wp-media.php:31
+msgctxt "WP_Media button text"
+msgid "Remove file"
+msgstr "Eliminar archivo"
+
+#: src/forms/elements/class-wp-media.php:35
+msgctxt "WP_Media button text"
+msgid "Replace file"
+msgstr "Reemplazar archivo"
+
+#: src/forms/elements/class-wp-media.php:46
+msgid "You need to call wp_enqueue_media() on the admin_enqueue_scripts hook"
+msgstr "Necesitas llamar wp_enqueue_media() en el gancho admin_enqueue_scripts"
+
+#: src/forms/elements/class-yes-no.php:12
+msgctxt "\"yes\" option"
+msgid "Yes"
+msgstr "Sí"
+
+#: src/forms/elements/class-yes-no.php:13
+msgctxt "\"no\" option"
+msgid "No"
+msgstr "No"
+
+#: src/generator/admin/class-cpt-plugin.php:30
+msgctxt "admin title"
+msgid "Generate Custom Post Type Plugin"
+msgstr "Generar plugin de tipo personalizado de contenido"
+
+#: src/generator/admin/class-cpt-plugin.php:33
+msgctxt "admin menu"
+msgid "Generate Custom Post Type Plugin"
+msgstr "Generar plugin de tipo personalizado de contenido"
+
+#: src/generator/admin/class-cpt-plugin.php:46
+msgctxt "cpt generator label"
+msgid "Post Type slug"
+msgstr "\"Slug\" del tipo de contenido"
+
+#: src/generator/admin/class-cpt-plugin.php:49
+msgctxt "cpt generator"
+msgid ""
+"A <strong>singular</strong> slug, used as <code>post_type</code> on new "
+"entries. Max. 20 characters, no capital letters or spaces"
+msgstr ""
+"Un slug en <strong>singular</strong>, se utiliza como <code>post_type</code> "
+"en nuevas entradas. Máximo 20 caracteres, sin mayúsculas ni espacios"
+
+#: src/generator/admin/class-cpt-plugin.php:56
+msgctxt "cpt generator label"
+msgid "Label"
+msgstr "Etiqueta"
+
+#: src/generator/admin/class-cpt-plugin.php:59
+msgctxt "cpt generator"
+msgid "A <strong>plural</strong> descriptive name for the post type"
+msgstr ""
+"Una nombre descriptivo en <strong>plural</strong> para este tipo de contenido"
+
+#: src/generator/admin/class-cpt-plugin.php:66
+msgctxt "cpt generator label"
+msgid "Description"
+msgstr "Descripción"
+
+#: src/generator/admin/class-cpt-plugin.php:69
+msgctxt "cpt generator placeholder"
+msgid "A short descriptive summary of what the post type is"
+msgstr "Un resumen breve y descriptivo de qué es este tipo de contenido"
+
+#: src/generator/admin/class-cpt-plugin.php:77
+msgctxt "cpt generator label"
+msgid "Public"
+msgstr "Público"
+
+#: src/generator/admin/class-cpt-plugin.php:80
+msgid ""
+"True: Post type is intended for public use. This includes on the front end "
+"and in wp-admin"
+msgstr ""
+"Verdadero: el tipo de contenido es para uso público. Esto incluye tanto el "
+"front-end como la administración"
+
+#: src/generator/admin/class-cpt-plugin.php:81
+msgid ""
+"False: Post type is not intended to be used publicly and should generally be "
+"unavailable in wp-admin and on the front end unless explicitly planned for "
+"elsewhere"
+msgstr ""
+"Falso: el tipo de contenido no se debe usar públicamente y generalmente no "
+"debe estar disponible en la administración ni en el front-end a menos que se "
+"planifique explícitamente de otro modo"
+
+#: src/generator/admin/class-cpt-plugin.php:88
+msgctxt "cpt generator label"
+msgid "Supports"
+msgstr "Soporta"
+
+#: src/generator/admin/class-cpt-plugin.php:96
+msgid "Hierarchical"
+msgstr "Jerarquía"
+
+#: src/generator/admin/class-cpt-plugin.php:99
+msgid ""
+"Whether the post type is hierarchical. Allows Parent to be specified. The "
+"'supports' parameter should contain 'page-attributes' to show the parent "
+"select box on the editor page"
+msgstr ""
+"Indica si el tipo de contenido es jerárquico. Permite que se especifique un "
+"contenido padre. El parámetro 'supports' debe contener 'page-attributes' "
+"para mostrar el selector de contenido padre en la página de edición"
+
+#: src/generator/admin/class-cpt-plugin.php:106
+msgid "Has archive"
+msgstr "Tiene archivo"
+
+#: src/generator/admin/class-cpt-plugin.php:109
+msgid "Enables post type archives"
+msgstr "Habilita el archivo del tipo de contenido"
+
+#: src/generator/admin/class-cpt-plugin.php:117
+msgid "Rewrite"
+msgstr "Reescritura"
+
+#: src/generator/admin/class-cpt-plugin.php:186
+msgctxt "cpt generator label"
+msgid "Show in menu"
+msgstr "Mostrar en el menú"
+
+#: src/generator/admin/class-cpt-plugin.php:202
+msgctxt "cpt option"
+msgid "Do not display in the admin menu"
+msgstr "No mostrar en el menú de administración"
+
+#: src/generator/admin/class-cpt-plugin.php:203
+msgctxt "cpt option"
+msgid "Display as a top level menu"
+msgstr "Mostrar como menú de primer nivel"
+
+#: src/generator/builder/class-custom-post-type.php:36
+msgid "Title"
+msgstr "Título"
+
+#: src/generator/builder/class-custom-post-type.php:37
+msgid "Editor (content)"
+msgstr "Editor (contenido)"
+
+#: src/generator/builder/class-custom-post-type.php:38
+msgid "Author"
+msgstr "Autor"
+
+#: src/generator/builder/class-custom-post-type.php:39
+msgid "Featured image"
+msgstr "Imagen destacada"
+
+#: src/generator/builder/class-custom-post-type.php:40
+msgid "Excerpt"
+msgstr "Extracto"
+
+#: src/generator/builder/class-custom-post-type.php:41
+msgid "Trackbacks"
+msgstr "Trackbacks"
+
+#: src/generator/builder/class-custom-post-type.php:42
+msgid "Custom fields"
+msgstr "Campos personalizados"
+
+#: src/generator/builder/class-custom-post-type.php:43
+msgid "Comments"
+msgstr "Comentarios"
+
+#: src/generator/builder/class-custom-post-type.php:44
+msgid "Revisions"
+msgstr "Revisiones"
+
+#: src/generator/builder/class-custom-post-type.php:45
+msgid "Page attributes: menu order, parent (if hierarchical is true)"
+msgstr ""
+"Atributos de página: orden de menú, padre (si \"jerárquico\" es verdadero)"
+
+#: src/generator/builder/class-custom-post-type.php:46
+msgid "Post formats"
+msgstr "Formatos de entrada"
+
+#: src/helpers/class-entries-options.php:30
+msgctxt "null entry option"
+msgid "(None)"
+msgstr "(Ninguno)"
+
+#: src/helpers/class-taxonomy-single-term-view.php:20
+msgctxt "single term tax metabox view"
+msgid "There are no %1$s registered yet"
+msgstr "Aún no hay %1$s registrados"
+
+#: src/helpers/class-term-options.php:20
+msgctxt "null term option"
+msgid "(None)"
+msgstr "(Ninguno)"
+
+#: src/validator/rules/class-is-boolean.php:34
+msgid "The value for this field should be of a true/false type"
+msgstr "El valor de este campo debe ser de tipo verdadero/falso"
+
+#: src/validator/rules/class-is-email.php:10
+msgid "Please enter a valid e-mail address"
+msgstr "Por favor ingresa un correo electrónico válido"
+
+#: src/validator/rules/class-is-required.php:11
+msgid "Please complete this field"
+msgstr "Por favor completa este campo"
+
+#: src/validator/rules/class-max-length.php:30
+msgctxt "queulat validator message"
+msgid "You can only type up to %d characters on this field"
+msgstr "Sólo puedes ingresar hasta %d caracteres en este campo"
+
+#: src/validator/rules/class-value-in.php:14
+#: src/validator/rules/class-value-not-in.php:14
+msgid "The provided value is not valid. Please use a valid value"
+msgstr "El valor indicado no es válido. Por favor usa un valor válido"

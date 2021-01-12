@@ -27,9 +27,21 @@ abstract class Post_Type {
 	 */
 	abstract public function get_post_type() : string;
 
+	/**
+	 * Get post type arguments.
+	 *
+	 * @see register_post_type
+	 * @return array
+	 */
 	abstract public function get_post_type_args() : array;
 
-	public function get_post_type_object() : WP_Post_Type {
+	/**
+	 * Get the registered post type object
+	 *
+	 * @see get_post_type_object
+	 * @return null|WP_Post_Type
+	 */
+	public function get_post_type_object() : ?WP_Post_Type {
 		return get_post_type_object( $this->get_post_type() );
 	}
 

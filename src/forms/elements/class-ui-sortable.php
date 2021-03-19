@@ -30,7 +30,7 @@ class UI_Sortable extends Form_Component implements Option_Node_Interface {
 
 		return (string) $container;
 	}
-	private function build_item( $label, $value = '' ) {
+	protected function build_item( $label, $value = '' ) {
 		return Node_Factory::make(
 			Div::class,
 			[

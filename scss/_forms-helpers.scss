@@ -6,4 +6,14 @@
 			visibility: hidden;
 		}
 	}
+	.queulat-sortable {
+		.item-edit {
+			&::before {
+				content: "\f329";
+			}
+		}
+		.item-edit:not(:hover) {
+			color: #ccc;
+		}
+	}
 }

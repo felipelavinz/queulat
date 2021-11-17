@@ -46,6 +46,122 @@ Plugin headers are optional, but recommended.
 
 You could also use something like [Bedrock's autoloader](https://github.com/roots/bedrock/blob/master/web/app/mu-plugins/bedrock-autoloader.php), which will load all mu-plugins installed on sub-folders (you can just copy that file on your mu-plugin folder and it will automagically load Queulat).
 
+# Leveraging WordPress architecture with Queulat
+
+Queulat it's aimed at *improving the way we create things for WordPress*, so instead of fundamentally transforming it, it tries to use familiar concepts to build better-structured things for it, using *custom post types*, *custom post queries* and *custom post objects*.
+
+You can generate these using its own *custom post type plugin generator*, which is available to admin users on the "Tools" menu.
+
+## Types, queries and objects
+
+Each custom post type plugin it's composed of:
+
+* An entry file, which initializes the plugin
+* A post type definition, for instance: `Song_Post_Type`. This class defines the labels and other arguments for registering the post type on WordPress. By default, the plugin activation will add the needed permisions for administrators and flush rewrites. You could extend this class if you need to define custom hooks for extra functionality for the post type.
+* A query definition, like `Song_Post_Query`. You can use this class to create new database queries, using any default params that you might want to define for this type of content, and iterate over the results using a simple `foreach` instead of the classic WordPress loop.
+* An object definition: `Song_Post_Object`, which will be returned on the `foreach` loop when using the custom query. This way, you could add any custom methods to this class, which will be available on the `foreach` loop.
+
+Using Queulat, you could do something like:
+
+```php
+$tracklist = new Song_Post_Query( array(
+	'tax_query'      => array(
+		array(
+			'taxonomy' => 'albums',
+			'term'     => 'dark-side-of-the-moon',
+			'field'    => 'slug'
+		)
+	)
+) );
+
+foreach ( $tracklist as $track ) {
+	echo $track->title();
+	echo $track->duration();
+	echo $track->lyrics();
+}
+```
+
+### Post Types
+
+`@todo`
+
+### Post Queries
+
+`@todo`
+
+### Post Objects
+
+`@todo`
+
+## Meta boxes
+
+Presently, the primary way to define meta data on post objects it's creating meta boxes; extending the included `Queulat\Metabox` abstract class.
+
+The extending class *must* implement the abstract methods: `get_fields( ) : array` and `sanitize_data( array $data ) : array`; for instance:
+
+```php
+<?php
+
+use Queulat\Metabox;
+use Queulat\Forms\Node_Factory;
+use Queulat\Forms\Element\Input_Text;
+
+class Track_Meta_Box extends Metabox {
+	/**
+	 * Must return the list of form fields to be included on this meta box
+	 *
+	 * @return Queulat\Forms\Node_Interface[] Array of form fields.
+	 **/
+	public function get_fields() : array {
+		return array(
+			Node_Factory::make(
+				Input_Text::class,
+				array(
+					'name'                   => 'length',
+					'label'                  => 'Track length',
+					'attributes.class'       => 'regular-text',
+					'properties.description' => _x( 'Track duration, such as: 01:23:45 (1 hour, 23 minutes, 45 seconds)', 'length field description', 'track_cpt' ),
+				)
+			),
+			Node_Factory::class(
+				Input_Checkbox::class,
+				array(
+					'name'  => 'colour',
+					'label' => 'Colour',
+					'options' => array(
+						'red'   => 'Red',
+						'green' => 'Green',
+						'blue'  => 'Blue',
+						'any'   => 'Any colour'
+					)
+				)
+			)
+		);
+	}
+
+	/**
+	 * Sanitize data from the metabox form.
+	 *
+	 * @param array $data Form data from the meta box (not the full $_POST).
+	 * @return array Sanitized data.
+	 **/
+	public function sanitize_data( array $data ) : array {
+		return queulat_sanitizer( $data, array(
+			'length'   => array( 'sanitize_text' ),
+			'colour.*' => array( 'sanitize_key' )
+		) );
+	}
+}
+```
+
+Queulat takes care of updating the submitted data as post meta fields, and loading the saved values on the meta box form.
+
+For sanitizing data, you could use whatever method you prefer. The referenced `queulat_sanitizer()` function it's a pretty simple way to apply callbacks to the matching values from the `$data` input. You can use `*` to match all properties (using dot notation).
+
+Check the section on (using Queulat forms)[#using-queulat-forms] for more info on available form fields or how to create your own.
+
+# Creating admin pages
+
 # Using Queulat Forms
 
 `@todo: add general description`
@@ -121,23 +237,23 @@ use Queulat\Forms\Node_Factory;
 use Queulat\Forms\Element\Button;
 
 $submit = Node_Factory::make(
-	Div::class, [
-		'attributes' => [
+	Div::class, array(
+		'attributes' => array(
 			'class'  => 'col-md-4 col-md-offset-8',
 			'id'     => 'form-buttons'
-		],
+		),
 		'text_content' => '* required field',
-		'children'     => [
+		'children'     => array(
 			Node_Factory::make(
 				Button::class,
-				'attributes' => [
+				'attributes' => array(
 					'class'  => 'btn-lg',
 					'type'   => 'submit'
-				],
+				),
 				'text_content' => 'Submit'
 			)
-		]
-	];
+		)
+	);
 );
 
 echo $submit;
@@ -235,6 +351,3 @@ Use `Properties_Trait` to help implement this interface.
 ## View_Interface
 
 Base interface to be used by form views.
-
-# Creating new elements or components
-

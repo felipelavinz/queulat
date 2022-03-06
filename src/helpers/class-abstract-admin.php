@@ -174,7 +174,8 @@ abstract class Abstract_Admin {
 				$this->get_menu_title(),
 				$this->get_required_capability(),
 				$this->get_id(),
-				[ $this, 'admin_page' ]
+				[ $this, 'admin_page' ],
+				$this->get_position() ? $this->get_position() : null
 			);
 		}
 		return $this->admin_hook;

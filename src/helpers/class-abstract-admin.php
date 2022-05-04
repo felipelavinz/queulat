@@ -266,4 +266,16 @@ abstract class Abstract_Admin {
 		return;
 	}
 
+	/**
+	 * Get the "admin hook" name for this admin page
+	 *
+	 * @return string Hook name for admin page
+	 */
+	public function get_admin_hook() : string {
+		if ( ! empty( $this->admin_hook ) ) {
+			return $this->admin_hook;
+		}
+		return get_plugin_page_hookname( $this->get_id(), $this->get_parent_page() );
+	}
+
 }

@@ -69,11 +69,11 @@ abstract class Post_Type {
 	 * It will add all capabilities for the administrator role and
 	 * flush rewrite rules so permalinks can work correctly
 	 *
-	 * @param bool $networkwide True if it is a network-wide activation
+	 * @param bool $network_wide True if it is a network-wide activation
 	 */
-	public static function activate_plugin( $networkwide ) {
+	public static function activate_plugin( $network_wide = false ) {
 		// Activate for each site, if required
-		if ( function_exists( 'is_multisite' ) && is_multisite() && $networkwide ) {
+		if ( function_exists( 'is_multisite' ) && is_multisite() && $network_wide ) {
 			$blogs = get_sites();
 			foreach ( $blogs as $blog ) {
 				switch_to_blog( $blog->blog_id );

@@ -10,6 +10,7 @@
  */
 namespace Queulat;
 
+use WP_Error;
 use WP_Post_Type;
 
 abstract class Post_Type {
@@ -67,8 +68,28 @@ abstract class Post_Type {
 	 * This method should be called on register_activation_hook.
 	 * It will add all capabilities for the administrator role and
 	 * flush rewrite rules so permalinks can work correctly
+	 *
+	 * @param bool $networkwide True if it is a network-wide activation
 	 */
-	public static function activate_plugin() {
+	public static function activate_plugin( $networkwide ) {
+		// Activate for each site, if required
+		if ( function_exists( 'is_multisite' ) && is_multisite() && $networkwide ) {
+			$blogs = get_sites();
+			foreach ( $blogs as $blog ) {
+				switch_to_blog( $blog->blog_id );
+				static::activate_for_blog();
+				restore_current_blog();
+			}
+		} else {
+			static::activate_for_blog();
+		}
+	}
+
+	/**
+	 * Activate plugin for the current blog
+	 * @return WP_Error|true True if successful; WP_Error otherwhise
+	 */
+	private static function activate_for_blog() {
 		$admin = get_role( 'administrator' );
 		$class = get_called_class();
 
@@ -112,5 +133,7 @@ abstract class Post_Type {
 
 		// regenerate permalinks structure
 		flush_rewrite_rules();
+
+		return true;
 	}
 }

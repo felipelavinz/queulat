@@ -2,8 +2,8 @@
 
 namespace Queulat;
 
-use Queulat\Forms\Element\Fieldset;
 use Underscore\Types\Arrays;
+use Queulat\Forms\Element\Fieldset;
 use Queulat\Forms\Element\WP_Nonce;
 use Queulat\Forms\Form_Node_Interface;
 

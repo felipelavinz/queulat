@@ -4,11 +4,10 @@ namespace Queulat\Forms\View;
 
 use Queulat\Forms;
 use Queulat\Forms\Element\Input;
-use Queulat\Forms\Element_Interface;
+use Queulat\Forms\Element\WP_Nonce;
+use Queulat\Forms\Attributes_Interface;
 use Queulat\Forms\Element\Input_Hidden;
 use Queulat\Forms\Properties_Interface;
-use Queulat\Forms\Attributes_Interface;
-use Queulat\Forms\Form_Element_Interface;
 
 class WP_Side extends Forms\Form_View {
 	private $i = 1;
@@ -17,7 +16,7 @@ class WP_Side extends Forms\Form_View {
 		$out .= '<div class="queulat-form">';
 		foreach ( $this->form->get_children() as $element ) {
 			$this->set_element_view_attributes( $element );
-			if ( $element instanceof Input_Hidden ) {
+			if ( $element instanceof Input_Hidden || $element instanceof WP_Nonce ) {
 				$out     .= '<div class="hidden">';
 					$out .= (string) $element;
 				$out     .= '</div>';
@@ -26,7 +25,7 @@ class WP_Side extends Forms\Form_View {
 				$out     .= '<div class="control-group">';
 					$out .= '<p>';
 				if ( is_callable( [ $element, 'get_label' ] ) ) {
-					$out .= '<label for="' . $element->get_attribute( 'id' ) . '">' . $element->get_label() . '</label>';
+					$out .= '<label for="' . $element->get_attribute( 'id' ) . '">' . $element->get_label() . ':</label> ';
 				}
 						$out .= (string) $element;
 						$out .= $this->get_element_description( $element );

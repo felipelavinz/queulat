@@ -3,7 +3,6 @@
 namespace Queulat\Forms\View;
 
 use Queulat\Forms;
-use Queulat\Forms\Element;
 use Queulat\Forms\Element\Fieldset;
 use Queulat\Forms\Element_Interface;
 use Queulat\Forms\Element\Input_Text;

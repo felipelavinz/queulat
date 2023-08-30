@@ -145,6 +145,10 @@ abstract class Metabox {
 	 * Do the actual metabox registration for the given post-type
 	 */
 	final public function add_metabox() {
+		$do_add = apply_filters( 'add_meta_box_'. $this->get_id(), true, $this );
+		if ( ! $do_add ) {
+			return false;
+		}
 		add_meta_box( $this->get_id(), $this->get_title(), array( $this, 'content_callback' ), $this->get_post_type(), $this->args['context'], $this->args['priority'] );
 	}
 

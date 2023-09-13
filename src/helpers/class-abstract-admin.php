@@ -259,6 +259,14 @@ abstract class Abstract_Admin {
 		if ( ! $validate->is_valid() ) {
 			return;
 		}
+
+		/**
+		 * Allow custom actions just before processing sanitized data
+		 *
+		 * @param array  Sanitized data
+		 * @param static Instantiated admin
+		 */
+		do_action( "queulat_abstract_admin_before_process_data", $sanitized, $this );
 		if ( $this->process_data( $sanitized ) ) {
 			wp_safe_redirect( add_query_arg( $this->get_success_url_params(), $this->get_redirect_url() ), 303 );
 			exit;

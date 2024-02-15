@@ -13,8 +13,15 @@
 			return $row.find('.js-queulat-repeater__control').each( function( i, obj ){
 				var rowIndex     = parseInt( $row.data('row'), 10 );
 				var nameTemplate = $( obj ).data('name');
-				$( obj ).attr( 'name', nameTemplate.replace('__i__', rowIndex ) );
+				var newName      = nameTemplate.replace('__i__', rowIndex );
+				$( obj ).attr( 'name', newName );
 				$( obj ).data( 'row', rowIndex );
+				if ( $( obj ).hasClass('js-queulat-wp-media') ) {
+					var $itemTemplate = $( obj ).find('.tmpl-wpmedia-item');
+					var regex = /name=".+?"/
+					var newItemTemplate = $itemTemplate.html().replace( regex, 'name=\"'+newName+'\"');
+					$itemTemplate.html( newItemTemplate );
+				}
 			} );
 		};
 		$( 'body' ).on( 'click', '.js-queulat-repeater__add', function( event ){
@@ -24,9 +31,11 @@
 			var $lastRow   = $rows.filter(':last');
 			var $clonedRow = $lastRow.clone();
 			$clonedRow.data('row', $rows.length );
+			$clonedRow.find('div.queulat-wpmedia-item').remove();
 			$lastRow.after( $clonedRow );
 			reindexRowControls( $clonedRow, true );
-			$clonedRow.find('input, select').val('').filter(':first').focus();
+			$clonedRow.find('input, select').val('');
+			$clonedRow.find('input, select').filter(':first').trigger('focus');
 		} ).on( 'click', '.js-queulat-repeater__remove', function( event ){
 			var $container = $(this).closest('.js-queulat-repeater');
 			var $rows      = $container.find('.js-queulat-repeater__row');

@@ -13,7 +13,8 @@
         "twig/twig": "^2.0",
         "doctrine/inflector": "v1.2.*",
         "anahkiasen/underscore-php": "^2.0",
-        "composer/installers": "^2"
+        "composer/installers": "^2",
+        "minwork/array": "^1"
     },
     "autoload": {
         "classmap":[
@@ -37,5 +38,11 @@
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
         "phpcompatibility/php-compatibility": "^9.1",
         "php-parallel-lint/php-parallel-lint": "^1"
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     }
 }

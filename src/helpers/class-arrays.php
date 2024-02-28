@@ -19,6 +19,14 @@ class Arrays {
 		return array_keys( $keys ) !== $keys;
 	}
 
+	/**
+	 * Flatten a multi-dimensional associative array with dots.
+	 *
+	 * @param array $array Input array.
+	 * @param int   $mode  Mode of flattening.
+	 * @return array Array with dotted keys
+	 * @see \Minwork\Helper\Arr for mode constants.
+	 */
 	public static function flatten( array $array, int $mode = \Minwork\Helper\Arr::UNPACK_ALL ) : array {
 		return \Minwork\Helper\Arr::unpack( $array, $mode );
 	}

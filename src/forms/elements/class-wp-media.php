@@ -2,8 +2,8 @@
 
 namespace Queulat\Forms\Element;
 
-use Queulat\Forms\Form_Component;
 use Queulat\Forms\Node_Factory;
+use Queulat\Forms\Form_Component;
 
 class WP_Media extends Form_Component {
 

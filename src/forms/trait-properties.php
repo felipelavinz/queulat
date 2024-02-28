@@ -2,7 +2,7 @@
 
 namespace Queulat\Forms;
 
-use Underscore\Types\Arrays;
+use Queulat\Helpers\Arrays;
 
 /**
  * The Properties Trait allows to associate random data with a given node
@@ -68,7 +68,7 @@ trait Properties_Trait {
 	 */
 	protected function init_properties( array $properties ) {
 		// recursively filter null values
-		$this->properties = Arrays::filterRecursive( $properties );
+		$this->properties = Arrays::filter_recursive( $properties );
 		if ( $this instanceof Attributes_Interface ) {
 			// collect all attributes properties for this element
 			$this->collect_attributes();

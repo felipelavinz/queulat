@@ -3,8 +3,10 @@
 namespace Queulat\Generator\Builder;
 
 use WP_Post_Type;
+use Twig\Environment;
+use Queulat\Helpers\Strings;
 use Queulat\Generator\Renderer;
-use Underscore\Types\Strings;
+use Twig\Loader\FilesystemLoader;
 
 class Custom_Post_Type_Plugin {
 
@@ -70,8 +72,8 @@ class Custom_Post_Type_Plugin {
 	 */
 	public function get_template_vars() : array {
 		$label               = $this->wp_post_type->label;
-		$file_name           = strtolower( Strings::toKebabCase( $this->wp_post_type->name ) );
-		$class_name          = Strings::toCapitalizedSnakeCase( $this->raw_slug );
+		$file_name           = strtolower( Strings::to_kebab_case( $this->wp_post_type->name ) );
+		$class_name          = Strings::to_capitalized_snake_case( $this->raw_slug );
 		$description         = $this->wp_post_type->description;
 		$post_type           = $this->wp_post_type->name;
 		$post_type_arguments = Renderer::ident( $this->render_post_type_arguments(), 3 );
@@ -99,8 +101,8 @@ class Custom_Post_Type_Plugin {
 		$stub   = $template_vars['file_name'];
 		$prefix = apply_filters( 'quelat_generate_builder_ctp_plugin', 'queulat-' );
 
-		$loader       = new \Twig_Loader_Filesystem( __DIR__ . '/../stubs' );
-		$twig         = new \Twig_Environment( $loader, [] );
+		$loader       = new FilesystemLoader( __DIR__ . '/../stubs' );
+		$twig         = new Environment( $loader, [] );
 		$templates    = $this->get_templates();
 		$output_files = [];
 		foreach ( $templates as $template ) {

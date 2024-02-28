@@ -2,7 +2,7 @@
 
 namespace Queulat\Generator\Builder;
 
-use Underscore\Types\Arrays;
+use Queulat\Helpers\Arrays;
 
 class Custom_Post_Type {
 	private $params = [];
@@ -99,6 +99,6 @@ class Custom_Post_Type {
 		} else {
 			unset( $sanitized['rewrite_enable'] );
 		}
-		return Arrays::reverseFlatten( $sanitized );
+		return Arrays::reverse_flatten( $sanitized );
 	}
 }

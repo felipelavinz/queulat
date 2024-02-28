@@ -3,7 +3,7 @@
 namespace Queulat\Forms\Element;
 
 use Queulat\Forms;
-use Underscore\Types\Arrays;
+use Queulat\Helpers\Arrays;
 use Queulat\Forms\Node_List;
 use Queulat\Forms\Node_Interface;
 use Queulat\Forms\Node_List_Interface;
@@ -49,11 +49,11 @@ class Select extends Forms\HTML_Form_Element implements Forms\Option_Node_Interf
 	}
 
 	private function maybe_deep_options( $options ) {
-		if ( ! Arrays::isAssociative( $options ) ) {
+		if ( ! Arrays::is_associative( $options ) ) {
 			$options = array_combine( $options, $options );
 		}
 		foreach ( $options as $key => $val ) {
-			if ( is_array( $val ) && ! Arrays::isAssociative( $val ) ) {
+			if ( is_array( $val ) && ! Arrays::is_associative( $val ) ) {
 				$options[ $key ] = array_combine( $val, $val );
 			}
 		}

@@ -20,7 +20,6 @@
             "src/"
         ],
         "files": [
-            "src/helpers/underscores-extend.php",
             "src/helpers/helpers-admin.php"
         ]
     },

@@ -2,7 +2,7 @@
 
 namespace Queulat\Helpers;
 
-use Doctrine\Common\Inflector\Inflector;
+use Doctrine\Inflector\InflectorFactory;
 
 class Strings {
 	private function __construct() {
@@ -87,6 +87,7 @@ class Strings {
 	 * @return string Pluralized string
 	 */
 	public static function plural( string $input ) : string {
-		return Inflector::pluralize( $input );
+		$inflector = InflectorFactory::create()->build();
+		return $inflector->pluralize( $input );
 	}
 }

@@ -1,12 +1,12 @@
 {
-    "name": "felipelavinz/queulat",
+    "name": "bloom-ux/queulat",
     "description": "Developers toolset for WordPress",
     "type": "wordpress-muplugin",
     "license": "GPL-3.0-or-later",
     "authors": [
         {
             "name": "Felipe Lavín Z.",
-            "email": "felipe@bloom-ux.com"
+            "email": "felipe@blom.lat"
         }
     ],
     "require": {

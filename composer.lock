@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a111a5687a78c6f0358483de42aa14af",
+    "content-hash": "df26ffbf5b66b55dfbf904c8f181d9fc",
     "packages": [
         {
             "name": "composer/installers",
@@ -298,6 +298,73 @@
             "time": "2020-10-04T22:20:56+00:00"
         },
         {
+            "name": "symfony/deprecation-contracts",
+            "version": "v3.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/deprecation-contracts.git",
+                "reference": "0e0d29ce1f20deffb4ab1b016a7257c4f1e789a1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/0e0d29ce1f20deffb4ab1b016a7257c4f1e789a1",
+                "reference": "0e0d29ce1f20deffb4ab1b016a7257c4f1e789a1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "3.5-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "function.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "A generic function and convention to trigger deprecation notices",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.5.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-04-18T09:32:20+00:00"
+        },
+        {
             "name": "symfony/polyfill-ctype",
             "version": "v1.29.0",
             "source": {
@@ -538,30 +605,37 @@
         },
         {
             "name": "twig/twig",
-            "version": "v3.8.0",
+            "version": "v3.10.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "9d15f0ac07f44dc4217883ec6ae02fd555c6f71d"
+                "reference": "67f29781ffafa520b0bbfbd8384674b42db04572"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/9d15f0ac07f44dc4217883ec6ae02fd555c6f71d",
-                "reference": "9d15f0ac07f44dc4217883ec6ae02fd555c6f71d",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/67f29781ffafa520b0bbfbd8384674b42db04572",
+                "reference": "67f29781ffafa520b0bbfbd8384674b42db04572",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
+                "symfony/deprecation-contracts": "^2.5|^3",
                 "symfony/polyfill-ctype": "^1.8",
                 "symfony/polyfill-mbstring": "^1.3",
                 "symfony/polyfill-php80": "^1.22"
             },
             "require-dev": {
                 "psr/container": "^1.0|^2.0",
-                "symfony/phpunit-bridge": "^5.4.9|^6.3|^7.0"
+                "symfony/phpunit-bridge": "^5.4.9|^6.4|^7.0"
             },
             "type": "library",
             "autoload": {
+                "files": [
+                    "src/Resources/core.php",
+                    "src/Resources/debug.php",
+                    "src/Resources/escaper.php",
+                    "src/Resources/string_loader.php"
+                ],
                 "psr-4": {
                     "Twig\\": "src/"
                 }
@@ -594,7 +668,7 @@
             ],
             "support": {
                 "issues": "https://github.com/twigphp/Twig/issues",
-                "source": "https://github.com/twigphp/Twig/tree/v3.8.0"
+                "source": "https://github.com/twigphp/Twig/tree/v3.10.3"
             },
             "funding": [
                 {
@@ -606,7 +680,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-11-21T18:54:41+00:00"
+            "time": "2024-05-16T10:04:27+00:00"
         }
     ],
     "packages-dev": [
@@ -690,16 +764,16 @@
         },
         {
             "name": "php-parallel-lint/php-parallel-lint",
-            "version": "v1.3.2",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-parallel-lint/PHP-Parallel-Lint.git",
-                "reference": "6483c9832e71973ed29cf71bd6b3f4fde438a9de"
+                "reference": "6db563514f27e19595a19f45a4bf757b6401194e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-parallel-lint/PHP-Parallel-Lint/zipball/6483c9832e71973ed29cf71bd6b3f4fde438a9de",
-                "reference": "6483c9832e71973ed29cf71bd6b3f4fde438a9de",
+                "url": "https://api.github.com/repos/php-parallel-lint/PHP-Parallel-Lint/zipball/6db563514f27e19595a19f45a4bf757b6401194e",
+                "reference": "6db563514f27e19595a19f45a4bf757b6401194e",
                 "shasum": ""
             },
             "require": {
@@ -737,13 +811,17 @@
                     "email": "ahoj@jakubonderka.cz"
                 }
             ],
-            "description": "This tool check syntax of PHP files about 20x faster than serial check.",
+            "description": "This tool checks the syntax of PHP files about 20x faster than serial check.",
             "homepage": "https://github.com/php-parallel-lint/PHP-Parallel-Lint",
+            "keywords": [
+                "lint",
+                "static analysis"
+            ],
             "support": {
                 "issues": "https://github.com/php-parallel-lint/PHP-Parallel-Lint/issues",
-                "source": "https://github.com/php-parallel-lint/PHP-Parallel-Lint/tree/v1.3.2"
+                "source": "https://github.com/php-parallel-lint/PHP-Parallel-Lint/tree/v1.4.0"
             },
-            "time": "2022-02-21T12:50:22+00:00"
+            "time": "2024-03-27T12:14:49+00:00"
         },
         {
             "name": "phpcompatibility/php-compatibility",
@@ -887,22 +965,22 @@
         },
         {
             "name": "phpcsstandards/phpcsutils",
-            "version": "1.0.9",
+            "version": "1.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHPCSUtils.git",
-                "reference": "908247bc65010c7b7541a9551e002db12e9dae70"
+                "reference": "87b233b00daf83fb70f40c9a28692be017ea7c6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHPCSUtils/zipball/908247bc65010c7b7541a9551e002db12e9dae70",
-                "reference": "908247bc65010c7b7541a9551e002db12e9dae70",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHPCSUtils/zipball/87b233b00daf83fb70f40c9a28692be017ea7c6c",
+                "reference": "87b233b00daf83fb70f40c9a28692be017ea7c6c",
                 "shasum": ""
             },
             "require": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.4.1 || ^0.5 || ^0.6.2 || ^0.7 || ^1.0",
                 "php": ">=5.4",
-                "squizlabs/php_codesniffer": "^3.8.0 || 4.0.x-dev@dev"
+                "squizlabs/php_codesniffer": "^3.10.0 || 4.0.x-dev@dev"
             },
             "require-dev": {
                 "ext-filter": "*",
@@ -971,20 +1049,20 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2023-12-08T14:50:00+00:00"
+            "time": "2024-05-20T13:34:27+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.9.0",
+            "version": "3.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
-                "reference": "d63cee4890a8afaf86a22e51ad4d97c91dd4579b"
+                "reference": "8f90f7a53ce271935282967f53d0894f8f1ff877"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/d63cee4890a8afaf86a22e51ad4d97c91dd4579b",
-                "reference": "d63cee4890a8afaf86a22e51ad4d97c91dd4579b",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/8f90f7a53ce271935282967f53d0894f8f1ff877",
+                "reference": "8f90f7a53ce271935282967f53d0894f8f1ff877",
                 "shasum": ""
             },
             "require": {
@@ -1051,20 +1129,20 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2024-02-16T15:06:51+00:00"
+            "time": "2024-05-22T21:24:41+00:00"
         },
         {
             "name": "wp-coding-standards/wpcs",
-            "version": "3.0.1",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WordPress/WordPress-Coding-Standards.git",
-                "reference": "b4caf9689f1a0e4a4c632679a44e638c1c67aff1"
+                "reference": "9333efcbff231f10dfd9c56bb7b65818b4733ca7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WordPress/WordPress-Coding-Standards/zipball/b4caf9689f1a0e4a4c632679a44e638c1c67aff1",
-                "reference": "b4caf9689f1a0e4a4c632679a44e638c1c67aff1",
+                "url": "https://api.github.com/repos/WordPress/WordPress-Coding-Standards/zipball/9333efcbff231f10dfd9c56bb7b65818b4733ca7",
+                "reference": "9333efcbff231f10dfd9c56bb7b65818b4733ca7",
                 "shasum": ""
             },
             "require": {
@@ -1073,16 +1151,16 @@
                 "ext-tokenizer": "*",
                 "ext-xmlreader": "*",
                 "php": ">=5.4",
-                "phpcsstandards/phpcsextra": "^1.1.0",
-                "phpcsstandards/phpcsutils": "^1.0.8",
-                "squizlabs/php_codesniffer": "^3.7.2"
+                "phpcsstandards/phpcsextra": "^1.2.1",
+                "phpcsstandards/phpcsutils": "^1.0.10",
+                "squizlabs/php_codesniffer": "^3.9.0"
             },
             "require-dev": {
                 "php-parallel-lint/php-console-highlighter": "^1.0.0",
                 "php-parallel-lint/php-parallel-lint": "^1.3.2",
                 "phpcompatibility/php-compatibility": "^9.0",
                 "phpcsstandards/phpcsdevtools": "^1.2.0",
-                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0"
+                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0 || ^8.0 || ^9.0"
             },
             "suggest": {
                 "ext-iconv": "For improved results",
@@ -1113,11 +1191,11 @@
             },
             "funding": [
                 {
-                    "url": "https://opencollective.com/thewpcc/contribute/wp-php-63406",
+                    "url": "https://opencollective.com/php_codesniffer",
                     "type": "custom"
                 }
             ],
-            "time": "2023-09-14T07:06:09+00:00"
+            "time": "2024-03-25T16:39:00+00:00"
         }
     ],
     "aliases": [],

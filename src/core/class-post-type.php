@@ -58,6 +58,8 @@ abstract class Post_Type {
 		$class     = get_called_class();
 		$post_type = new $class();
 
+		add_action( 'wp_initialize_site', array( static::class, 'init_for_site' ), 200 );
+
 		// Try to register the post type. Further validations are handled by WordPress
 		return register_post_type( $post_type->get_post_type(), $post_type->get_post_type_args() );
 	}
@@ -76,13 +78,28 @@ abstract class Post_Type {
 		if ( function_exists( 'is_multisite' ) && is_multisite() && $network_wide ) {
 			$blogs = get_sites();
 			foreach ( $blogs as $blog ) {
-				switch_to_blog( $blog->blog_id );
-				static::activate_for_blog();
-				restore_current_blog();
+				static::init_for_site( $blog->blog_id );
 			}
 		} else {
 			static::activate_for_blog();
 		}
+	}
+
+	/**
+	 * Initialize the plugin for a site.
+	 *
+	 * This runs on the wp_initialize_site hook, and is used to activate the plugin on a new site.
+	 *
+	 * @param \WP_Site $wp_site Site object.
+	 * @return void
+	 */
+	private static function init_for_site( $wp_site ) {
+		if ( ! $wp_site instanceof \WP_Site ) {
+			return;
+		}
+		switch_to_blog( $wp_site->blog_id );
+		static::activate_for_blog();
+		restore_current_blog();
 	}
 
 	/**

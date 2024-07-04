@@ -40,7 +40,7 @@ class Strings {
 	 */
 	public static function to_capitalized_snake_case(string $string, int $limit = 0) : string {
 		$string = preg_replace('/[^a-zA-Z0-9]/', '-', $string);
-		$string = explode($string, '-');
+		$string = explode('-', $string);
 		$string = array_map(
 			function($item) {
 				return strtoupper($item[0]) . substr($item, 1);

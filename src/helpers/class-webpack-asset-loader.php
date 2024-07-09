@@ -191,11 +191,12 @@ class Webpack_Asset_Loader {
 	 */
 	public function register_script( string $path ): string {
 		$basename = pathinfo( $path, PATHINFO_BASENAME );
-		if ( ! isset( $this->manifest->{$basename} ) ) {
+		$unversioned = $this->get_unversioned_path( $basename );
+		if ( ! isset( $this->manifest->{$unversioned} ) ) {
 			return $path;
 		}
-		if ( isset( $this->registered_scripts[ $basename ] ) ) {
-			return $this->registered_scripts[ $basename ];
+		if ( isset( $this->registered_scripts[ $unversioned ] ) ) {
+			return $this->registered_scripts[ $unversioned ];
 		}
 		$prefixed_handle = $this->get_file_handle( $basename );
 		$script_url      = $this->get_resource_uri( $basename );

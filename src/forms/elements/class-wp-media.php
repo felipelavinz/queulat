@@ -115,6 +115,7 @@ class WP_Media extends Form_Component {
 			]
 		);
 
+		wp_enqueue_media();
 		wp_enqueue_script( 'queulat-element-wp-media', plugins_url( 'js/element-wp-media.js', __FILE__ ), array( 'jquery', 'jquery-ui-sortable', 'underscore' ) );
 		return (string) $component;
 	}

@@ -6,13 +6,12 @@
     "authors": [
         {
             "name": "Felipe Lavín Z.",
-            "email": "felipe@bloom.lat"
+            "email": "felipe@blom.lat"
         }
     ],
     "require": {
-        "twig/twig": "^2.0",
-        "doctrine/inflector": "v1.2.*",
-        "anahkiasen/underscore-php": "^2.0",
+        "twig/twig": "^3.0",
+        "doctrine/inflector": "^2.0",
         "composer/installers": "^2",
         "minwork/array": "^1"
     },
@@ -21,7 +20,6 @@
             "src/"
         ],
         "files": [
-            "src/helpers/underscores-extend.php",
             "src/helpers/helpers-admin.php"
         ]
     },
@@ -34,8 +32,8 @@
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "3.*",
-        "wp-coding-standards/wpcs": "^2.0",
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
+        "wp-coding-standards/wpcs": "^3.0",
+        "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
         "phpcompatibility/php-compatibility": "^9.1",
         "php-parallel-lint/php-parallel-lint": "^1"
     },

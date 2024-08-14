@@ -18,6 +18,7 @@
 
 namespace Queulat;
 
+use Exception;
 use WP_Query;
 
 abstract class Post_Query implements \Iterator, \Countable {
@@ -197,9 +198,25 @@ abstract class Post_Query implements \Iterator, \Countable {
 	public function key() : int {
 		return $this->query->current_post;
 	}
+
+	/**
+	 * Move the internal pointer to the next element
+	 *
+	 * @return void
+	 * @internal Use ReturnTypeWillChange to silence warning and BC with php7
+	 */
+	#[\ReturnTypeWillChange]
 	public function next() {
 		$this->the_post = null;
 	}
+
+	/**
+	 * Move the internal pointer to the first element
+	 *
+	 * @return void
+	 * @internal Use ReturnTypeWillChange to silence warning and BC with php7
+	 */
+	#[\ReturnTypeWillChange]
 	public function rewind() {
 		// check if query was already made
 		if ( ! isset( $this->query ) ) {

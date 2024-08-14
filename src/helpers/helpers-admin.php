@@ -2,7 +2,8 @@
 /**
  * @package Queulat
  */
-use Underscore\Types\Arrays;
+
+use Queulat\Helpers\Arrays;
 
 /**
  * Get the URL to a given file from Queulat.
@@ -35,5 +36,5 @@ function queulat_sanitizer( array $data, array $rules ) : array {
 			}
 		}
 	}
-	return Arrays::reverseFlatten( $sanitized );
+	return Arrays::reverse_flatten( $sanitized );
 }

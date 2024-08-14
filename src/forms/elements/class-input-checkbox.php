@@ -2,11 +2,10 @@
 
 namespace Queulat\Forms\Element;
 
-use Queulat\Forms;
-use Underscore\Types\Arrays;
 use Queulat\Forms\Options_Trait;
 use Queulat\Forms\Node_Interface;
 use Queulat\Forms\Option_Node_Interface;
+use Queulat\Helpers\Arrays;
 
 class Input_Checkbox extends Input implements Option_Node_Interface {
 	protected $value;
@@ -20,7 +19,7 @@ class Input_Checkbox extends Input implements Option_Node_Interface {
 	}
 	public function __toString() : string {
 		$options = $this->get_options();
-		if ( ! Arrays::isAssociative( $options ) ) {
+		if ( ! Arrays::is_associative( $options ) ) {
 			$options = array_combine( (array) $options, (array) $options );
 		}
 		$out      = '<div' . $this->render_attributes() . '>';

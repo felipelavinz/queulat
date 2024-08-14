@@ -2,8 +2,6 @@
 
 namespace Queulat\Forms;
 
-use Underscore\Types\Arrays;
-
 /**
  * The Attributes_Trait helps in implementing all of the required methods for an
  * element supporting HTML attributes
@@ -159,7 +157,9 @@ trait Attributes_Trait {
 	 */
 	public function remove_class( string $class ) : Node_Interface {
 		$classes = $this->get_class_list();
-		$without = Arrays::without( $classes, $class );
+		$without = array_filter( $classes, function( $item ) use ( $class ) {
+			return $item !== $class;
+		} );
 		$this->set_attribute( 'class', implode( ' ', $without ) );
 		return $this;
 	}

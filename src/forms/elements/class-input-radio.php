@@ -3,13 +3,13 @@
 namespace Queulat\Forms\Element;
 
 use Queulat\Forms;
-use Underscore\Types\Arrays;
+use Queulat\Helpers\Arrays;
 
 class Input_Radio extends Input implements Forms\Option_Node_Interface {
 	use Forms\Options_Trait;
 	public function __toString() : string {
 		$options = $this->get_options();
-		if ( ! Arrays::isAssociative( $options ) ) {
+		if ( ! Arrays::is_associative( $options ) ) {
 			$options = array_combine( (array) $options, (array) $options );
 		}
 		$out  = '<div' . $this->render_attributes() . '>';

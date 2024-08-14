@@ -6,13 +6,30 @@
 			$receiver      = $container.find( 'div.queulat-wpmedia-receiver' ),
 			values         = $container.data( 'wpmedia-value' ),
 			item_template  = _.template( $container.find( '.tmpl-wpmedia-item' ).html() ),
+			// Use states to filter media library
+			// @see https://wordpress.stackexchange.com/questions/343289/add-media-attachment-filter-to-custom-wp-media-frame
+			queulatState   = wp.media.controller.Library.extend(
+				{
+					defaults :  _.defaults( 
+						$.extend(
+							{
+								'id': 'queulat-state'
+							},
+							$container.data( 'wpmedia-args' )
+						), 
+						wp.media.controller.Library.prototype.defaults
+					)
+				}
+			),
 			args           = $.extend(
 				true, {
 					title: '',
 					multiple: false,
 					button: {
 						text: ''
-					}
+					},
+					state: 'queulat-state',
+					states: [ new queulatState() ]
 				}, $container.data( 'wpmedia-args' )
 			),
 			selected       = '',

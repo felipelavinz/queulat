@@ -2,7 +2,6 @@
 
 namespace Queulat\Generator\Admin;
 
-use Underscore\Types\Strings;
 use Queulat\Validator\Value_In;
 use Queulat\Forms\Node_Factory;
 use Queulat\Validator\Max_Length;
@@ -18,6 +17,7 @@ use Queulat\Forms\Element\Input_Radio;
 use Queulat\Forms\Element\Input_Checkbox;
 use Queulat\Generator\Builder\Custom_Post_Type;
 use Queulat\Generator\Builder\Custom_Post_Type_Plugin;
+use Queulat\Helpers\Strings;
 
 /**
  * Generate an admin page for creating a new Custom Post Type plugin

@@ -2,7 +2,7 @@
 
 namespace Queulat;
 
-use Underscore\Types\Arrays;
+use Queulat\Helpers\Arrays;
 use Queulat\Forms\Element\Fieldset;
 use Queulat\Forms\Element\WP_Nonce;
 use Queulat\Forms\Form_Node_Interface;
@@ -267,7 +267,7 @@ abstract class Metabox {
 		}
 
 		$data = (array) $_POST[ $this->get_id() . '_metabox' ];
-		$data = Arrays::filterRecursive( $data );
+		$data = Arrays::filter_recursive( $data );
 
 		// no need for slashes; WordPress will take care of sanitizing when using "add/update_post_meta"
 		$data = stripslashes_deep( $data );

@@ -249,7 +249,7 @@ abstract class Abstract_Admin {
 	 * @return void
 	 */
 	public function process_form() {
-		if ( filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) != $this->get_id() . '__submit' ) {
+		if ( filter_input( INPUT_POST, 'action', FILTER_SANITIZE_FULL_SPECIAL_CHARS ) != $this->get_id() . '__submit' ) {
 			return;
 		}
 		check_admin_referer( "{$this->get_id()}__submit", "_{$this->get_id()}__submit-nonce" );

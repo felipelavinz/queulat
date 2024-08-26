@@ -93,7 +93,7 @@ abstract class Post_Type {
 	 * @param \WP_Site $wp_site Site object.
 	 * @return void
 	 */
-	private static function init_for_site( $wp_site ) {
+	public static function init_for_site( $wp_site ) {
 		if ( ! $wp_site instanceof \WP_Site ) {
 			return;
 		}
